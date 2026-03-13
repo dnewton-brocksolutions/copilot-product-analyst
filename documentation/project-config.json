@@ -1,0 +1,170 @@
+{
+  "_instructions": [
+    "READ ME FIRST: This is a TEMPLATE. Replace every TODO with your project's actual values.",
+    "The Business Analyst agent reads this file before creating any work item.",
+    "Required fields are marked with TODO. Optional fields can be removed if not applicable.",
+    "After editing, test by opening Copilot Chat and typing: @business-analyst /story Add a login page"
+  ],
+
+  "projectName": "TODO: Your Project Name",
+  "description": "TODO: One-sentence description of your application and its primary purpose",
+
+  "frontend": {
+    "framework": "TODO: React | Vue | Angular | Svelte | other",
+    "version": "TODO: e.g. 18.x",
+    "applications": [
+      {
+        "name": "TODO: AppName (e.g. AdminPortal)",
+        "description": "TODO: What this app does and who uses it",
+        "catalogPath": "documentation/business-analyst-workflow/catalogs/component-catalog.md"
+      }
+    ],
+    "_note_applications": "Add one entry per distinct frontend app or module. Remove this field if you only have one.",
+    "stateManagement": "TODO: Redux Toolkit | Vuex | Pinia | NgRx | Context API | none",
+    "dataFetching": "TODO: RTK Query | React Query | Apollo | Axios | fetch | gRPC-web",
+    "styling": "TODO: Material-UI | Tailwind | Bootstrap | Styled Components | CSS Modules | other",
+    "testing": "TODO: Jest + React Testing Library | Vitest | Cypress | Playwright | other"
+  },
+
+  "backend": {
+    "framework": "TODO: C# | Java | Python | Node.js | Go | other",
+    "version": "TODO: e.g. .NET 8.0 | Java 21 | Python 3.12",
+    "architecture": "TODO: Microservices | Monolith | Serverless | Modular Monolith",
+    "protocol": "TODO: gRPC | REST | GraphQL | tRPC | mixed",
+    "catalogPath": "documentation/business-analyst-workflow/catalogs/service-catalog.md",
+    "serviceCount": "TODO: approximate number of backend services or modules",
+    "servicePattern": {
+      "_note": "Describe the naming or structural pattern your services follow. Remove this section if not applicable.",
+      "example": "TODO: e.g. {ServiceName}Controller (REST) or {ServiceName}V1Service (gRPC)"
+    },
+    "commonServices": [
+      "TODO: List shared or platform services that most features depend on",
+      "TODO: e.g. AuthService, UserService, NotificationService"
+    ],
+    "orm": "TODO: Entity Framework Core | Hibernate | TypeORM | SQLAlchemy | Prisma | none",
+    "testing": "TODO: xUnit + Moq | JUnit + Mockito | pytest | Jest | other"
+  },
+
+  "database": {
+    "systems": [
+      {
+        "name": "TODO: Primary database name or label (e.g. MainDB, AppDB)",
+        "description": "TODO: What this database contains and any notable characteristics",
+        "migrationTool": "TODO: Liquibase | Flyway | EF Migrations | Alembic | raw SQL | none",
+        "updateProcess": "TODO: Describe how schema changes are applied (e.g. PR → CI pipeline runs migrations)",
+        "preferredUse": "TODO: Describe when to use this database for new work"
+      }
+    ],
+    "_note_systems": "Add additional database entries if you have multiple databases (e.g. read replica, reporting DB).",
+    "mcpAccess": {
+      "_note": "Fill in if your team uses MCP (Model Context Protocol) tools for live database queries.",
+      "description": "TODO: Remove this section or describe your MCP database access setup",
+      "availableDatabases": [
+        "TODO: List database identifiers accessible via MCP, e.g. MSSQL-Main, Postgres-Reports"
+      ],
+      "preferredApproach": "TODO: e.g. Query live database using MCP tools for schema discovery"
+    }
+  },
+
+  "workTracking": {
+    "tool": "TODO: Azure DevOps | Jira | GitHub Issues | Linear | other",
+    "process": "TODO: Agile | Scrum | Kanban",
+    "workItemTypes": [
+      "TODO: List work item types used by your team, e.g. Epic, Feature, User Story, Task, Bug"
+    ],
+    "areaPath": "TODO: Team or project path in your work tracking tool (e.g. MyProject\\Team\\SubTeam)",
+    "iterationPath": "TODO: Default sprint or iteration path (e.g. MyProject\\Sprint 1)",
+    "taskBreakdownOrder": [
+      "TODO: e.g. Backend Tasks first, then Frontend Tasks",
+      "TODO: Adjust to match your team's preferred sequencing"
+    ],
+    "taskBreakdownNote": "TODO: Any notes on how your team breaks down work. Remove or replace this placeholder."
+  },
+
+  "standards": {
+    "estimationUnit": "TODO: hours | story-points",
+    "estimationNote": "TODO: Describe how estimates roll up. E.g. 'Stories roll up from child Task hours'",
+    "defaultPriority": "P2 (Medium)",
+    "testPlanUpdateEstimate": "TODO: e.g. 2 hours per story",
+    "coverage": {
+      "target": "TODO: e.g. ≥80%",
+      "note": "TODO: Any notes on coverage enforcement (e.g. CI gate, manual review)"
+    },
+    "accessibility": {
+      "standard": "TODO: WCAG AA | WCAG AAA | Section 508 | none",
+      "testing": "TODO: Describe how accessibility is tested and enforced"
+    },
+    "performance": {
+      "note": "TODO: Describe performance expectations (e.g. p95 API latency <200ms)",
+      "budgets": "TODO: Define specific performance budgets or remove this section"
+    },
+    "observability": {
+      "required": [
+        "TODO: List required observability items, e.g. Structured logs, Metrics, Traces, Correlation IDs"
+      ],
+      "implementation": "TODO: Describe where observability is applied (e.g. at controller and service layers)"
+    },
+    "featureFlags": {
+      "policy": "TODO: always | risk-based | never",
+      "tool": "TODO: Azure App Config | LaunchDarkly | Unleash | custom | none",
+      "note": "TODO: Describe your feature flag policy or remove this section"
+    },
+    "security": {
+      "piiHandling": "TODO: Describe PII handling requirements or remove this section",
+      "secretsManagement": "TODO: Describe secrets management approach (e.g. Azure Key Vault, HashiCorp Vault)"
+    }
+  },
+
+  "tags": {
+    "default": [
+      "TODO: Add default tags that should appear on every work item, e.g. React, CSharp, Microservice"
+    ],
+    "additional": [
+      "TODO: Add optional tags for specific cross-cutting concerns, e.g. Security, Observability, PII"
+    ]
+  },
+
+  "catalogs": {
+    "directory": "documentation/business-analyst-workflow/catalogs/",
+    "files": [
+      {
+        "name": "service-catalog.md",
+        "description": "TODO: Describe what your service catalog covers (e.g. 12 REST microservices)",
+        "useFor": "TODO: When should the agent reference this catalog?"
+      },
+      {
+        "name": "component-catalog.md",
+        "description": "TODO: Describe what your component catalog covers (e.g. 40+ React components)",
+        "useFor": "TODO: When should the agent reference this catalog?"
+      }
+    ]
+  },
+
+  "documentation": {
+    "workItemsPath": "documentation/work-items/",
+    "templatesPath": "documentation/business-analyst-workflow/work-item-templates/",
+    "guidesPath": "documentation/business-analyst-workflow/guides/"
+  },
+
+  "estimationGuidelines": {
+    "_note": "Optional. Provide baseline estimates for common task types in your project.",
+    "newEndpoint": "TODO: e.g. 4-6 hrs for a new REST endpoint with tests",
+    "newUIPage": "TODO: e.g. 8-12 hrs for a new page with form and data grid",
+    "bugFix": "TODO: e.g. 1-4 hrs depending on complexity",
+    "refactor": "TODO: e.g. 4-8 hrs per service"
+  },
+
+  "definitionOfReady": {
+    "_note": "Optional. Add project-specific DoR additions beyond the defaults.",
+    "additionalCriteria": [
+      "TODO: Any extra gates a work item must pass before being considered ready for development"
+    ]
+  },
+
+  "definitionOfDone": {
+    "_note": "Optional. Add project-specific DoD additions beyond the defaults.",
+    "additionalCriteria": [
+      "TODO: Any extra completion requirements beyond: tests green, coverage met, PR merged"
+    ]
+  }
+}
