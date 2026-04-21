@@ -116,8 +116,17 @@ These are optional but can improve the agent's quality over time.
 - [ ] Add `estimationGuidelines` to `project-config.json` with baseline estimates for your most common task types
 - [ ] Add `definitionOfReady.additionalCriteria` for project-specific DoR gates
 - [ ] Add `definitionOfDone.additionalCriteria` for project-specific DoD requirements
-- [ ] Add MCP database access to let the agent query live databases during task creation
-      → See `documentation/MCP-DATABASE-SETUP.md` for full setup instructions
+- [ ] **Add MCP database access** — lets the agent query live databases during task creation so backend task requirements are grounded in actual table/procedure definitions rather than guesswork
+
+  **How it works:** MCP tools are registered in VS Code and made available to all agents automatically. The BA agent knows how and when to call them — you just need a compatible MCP server running and registered.
+
+  **Setup steps:**
+  1. Set up an MCP server that can connect to your database (build your own or use an existing one compatible with your DB engine)
+  2. Register the server in VS Code by adding an entry to `.vscode/mcp.json`
+  3. Confirm tools are available — open Copilot Chat and verify the MCP tools appear
+
+  **Reference:** [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)
+
 - [ ] Review and update catalogs after major features are delivered
 - [ ] Keep an `ESTIMATES-actual.md` to track estimate vs. actual and improve future estimates
 

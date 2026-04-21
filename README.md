@@ -18,6 +18,8 @@ This folder contains everything you need to install the **Business Analyst AI ag
 
 > **Prerequisite:** GitHub Copilot with agent/chatmode support (VS Code extension v1.99+)
 
+> **Optional — Live database investigation:** The agent can query your databases directly during task creation (e.g. inspecting table schemas and stored procedures before writing backend requirements). This requires a compatible MCP server to be registered in VS Code. See the [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers) for setup guidance. The agent works fully without MCP — database investigation just becomes a manual step.
+
 ### Step 1 — Run the install script
 
 From terminal, inside your project root:
