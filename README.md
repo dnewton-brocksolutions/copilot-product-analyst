@@ -22,7 +22,7 @@ A VS Code **agent plugin** that provides an AI-powered Business Analyst mode for
 
 1. Open the Command Palette (`Ctrl+Shift+P`)
 2. Run **Chat: Install Plugin From Source**
-3. Enter the Git repository URL for this plugin
+3. Enter: `https://github.com/dnewton-brocksolutions/copilot-business-analyst`
 4. VS Code clones and installs it — the Business Analyst agent is now available globally
 
 ### Option B — Use a local clone
@@ -32,7 +32,7 @@ Add the cloned directory to your VS Code settings:
 ```json
 // settings.json
 "chat.pluginLocations": {
-    "/path/to/ba-agent-installer": true
+    "/path/to/copilot-business-analyst": true
 }
 ```
 
@@ -106,7 +106,7 @@ Each skill loads its detailed instructions on demand when you invoke it. Skills 
 ## Plugin Structure
 
 ```
-ba-agent-installer/
+copilot-business-analyst/
 ├── plugin.json                         ← Plugin manifest (auto-detected by VS Code)
 ├── README.md                           ← You are here
 ├── SETUP-CHECKLIST.md                  ← Step-by-step project config guide
