@@ -1,6 +1,22 @@
-# Setup Checklist — Business Analyst Agent
+# Setup Checklist — Business Analyst Agent Plugin
 
-Use this checklist after running `install.sh` to configure the agent for your project. Work through it top to bottom — it takes about 30–60 minutes for a new project.
+Use this checklist after installing the plugin to configure the agent for your project. Work through it top to bottom — it takes about 30–60 minutes for a new project.
+
+## Prerequisites
+
+- [ ] VS Code 1.99+ with GitHub Copilot
+- [ ] `chat.plugins.enabled: true` in VS Code settings
+- [ ] Plugin installed via "Chat: Install Plugin From Source" or `chat.pluginLocations`
+
+## Phase 0: Copy Templates into Your Project (~2 min)
+
+Copy the `documentation/` folder from this repo into your project:
+
+```
+documentation/  →  <your-project>/documentation/business-analyst-workflow/
+```
+
+This gives you the config template, work item templates, catalog templates, and guides.
 
 ---
 
@@ -66,9 +82,10 @@ Edit `documentation/business-analyst-workflow/project-config.json` and replace e
 
 - [ ] Open VS Code
 - [ ] Open GitHub Copilot Chat (`Ctrl+Shift+I` or sidebar)
-- [ ] Type: `@business-analyst Read project-config.json and tell me what tech stack we use`
+- [ ] Select the **Business Analyst** custom mode from the mode picker
+- [ ] Type: `/context`
 - [ ] Confirm the agent reads your config and reflects the correct stack
-- [ ] Type: `@business-analyst /story Add a login page for users`
+- [ ] Type: `/story Add a login page for users`
 - [ ] Confirm the work item references your actual applications and tech stack
 
 ---

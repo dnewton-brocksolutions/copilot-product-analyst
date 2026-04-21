@@ -1,38 +1,60 @@
-# Business Analyst Agent — Standalone Installer
+# Business Analyst Agent Plugin
 
-This folder contains everything you need to install the **Business Analyst AI agent** into any project using GitHub Copilot. Once installed, the agent helps your team create concise, well-structured work items (User Stories, Tasks, Bugs, Epics) grounded in your project's specific tech stack and architecture.
+A VS Code **agent plugin** that provides an AI-powered Business Analyst mode for GitHub Copilot. The agent helps your team create concise, well-structured work items (User Stories, Tasks, Bugs, PRs, Release Notes) grounded in your project's specific tech stack and architecture.
 
 ---
 
 ## What You Get
 
-- **AI-powered BA mode** — activate via `@business-analyst` in GitHub Copilot Chat
+- **AI-powered BA mode** — activate via the Business Analyst custom chat mode in GitHub Copilot Chat
 - **Project-aware work items** — agent reads your `project-config.json` before creating any work item
-- **Consistent templates** — backend tasks, frontend tasks, estimates, bugs, and user stories
-- **Separation of concerns** — requirements and estimates kept in separate documents
+- **Built-in skills** — `/business-analyst:story`, `/business-analyst:bug`, `/business-analyst:decompose`, and more, each loading on-demand
+- **Consistent output** — three-file story pattern, Objective + Requirements tasks, strict ADO bug format
 - **Scalable catalog system** — service and component catalogs for accurate estimation
 
 ---
 
-## Quick Install (5 minutes)
+## Install the Plugin (2 minutes)
 
-> **Prerequisite:** GitHub Copilot with agent/chatmode support (VS Code extension v1.99+)
+> **Prerequisite:** GitHub Copilot with agent plugin support (VS Code 1.99+, `chat.plugins.enabled: true`)
 
-> **Optional — Live database investigation:** The agent can query your databases directly during task creation (e.g. inspecting table schemas and stored procedures before writing backend requirements). This requires a compatible MCP server to be registered in VS Code. See the [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers) for setup guidance. The agent works fully without MCP — database investigation just becomes a manual step.
+### Option A — Install from Git URL (recommended)
 
-### Step 1 — Run the install script
+1. Open the Command Palette (`Ctrl+Shift+P`)
+2. Run **Chat: Install Plugin From Source**
+3. Enter the Git repository URL for this plugin
+4. VS Code clones and installs it — the Business Analyst agent is now available globally
 
-From terminal, inside your project root:
+### Option B — Use a local clone
 
-```bash
-bash /path/to/ba-agent-installer/install.sh /path/to/your/project
+Add the cloned directory to your VS Code settings:
+
+```json
+// settings.json
+"chat.pluginLocations": {
+    "/path/to/ba-agent-installer": true
+}
 ```
 
-Or copy files manually — see [manual install](#manual-install) below.
+---
+
+## Set Up Your Project (15–60 minutes)
+
+The plugin provides the agent globally. Each project needs its own configuration so the agent understands your tech stack.
+
+### Step 1 — Copy the documentation templates
+
+Copy the `documentation/` folder from this repo into your project:
+
+```
+<your-project>/documentation/business-analyst-workflow/
+```
+
+This gives you the project config template, work item templates, catalog templates, and guides.
 
 ### Step 2 — Configure your project
 
-Edit `documentation/business-analyst-workflow/project-config.json` in your project. Replace all `TODO` placeholders with your project's information:
+Edit `documentation/business-analyst-workflow/project-config.json`. Replace all `TODO` placeholders:
 
 - Project name and description
 - Frontend framework and applications
@@ -41,67 +63,71 @@ Edit `documentation/business-analyst-workflow/project-config.json` in your proje
 - Work tracking tool and organization paths
 - Team standards (estimation, coverage, accessibility)
 
-See [SETUP-CHECKLIST.md](SETUP-CHECKLIST.md) for a step-by-step configuration walkthrough.
+See [SETUP-CHECKLIST.md](SETUP-CHECKLIST.md) for a step-by-step walkthrough.
 
-### Step 3 — Build your catalogs (optional but recommended)
+### Step 3 — Build your catalogs (recommended)
 
 Populate the catalog templates in `documentation/business-analyst-workflow/catalogs/` with your actual services and components. Better catalogs = more accurate estimates.
 
 ### Step 4 — Test it
 
-Open GitHub Copilot Chat and type:
+Open GitHub Copilot Chat, select the **Business Analyst** custom mode, and type:
 
 ```
-@business-analyst /story Add a login page for operators
+/business-analyst:context
 ```
 
-The agent should respond by first reading your `project-config.json` and producing a work item that references your actual tech stack.
+The agent should read your `project-config.json` and summarize your tech stack. Then try:
+
+```
+/business-analyst:story Add a login page for operators
+```
+
+> **Optional — Live database investigation:** The agent can query your databases directly during task decomposition (inspecting table schemas and stored procedures before writing backend requirements). This requires a compatible MCP server registered in VS Code. See the [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers) for setup. The agent works fully without MCP — database investigation just becomes a manual step.
 
 ---
 
-## Manual Install
+## Available Skills
 
-If you prefer to copy files manually:
+Each skill loads its detailed instructions on demand when you invoke it. Skills are automatically prefixed with the plugin name when installed via the plugin.
 
-```
-1. Copy agent file:
-   agent/business-analyst-core.agent.md       →  <project>/.github/agents/business-analyst-core.agent.md
-
-2. Copy prompt files:
-   agent/prompts/*.prompt.md                  →  <project>/.github/prompts/
-
-3. Copy documentation folder:
-   documentation/                             →  <project>/documentation/business-analyst-workflow/
-
-4. Edit project config:
-   <project>/documentation/business-analyst-workflow/project-config.json
-```
+| Slash Command                     | Description                                                                           |
+| --------------------------------- | ------------------------------------------------------------------------------------- |
+| `/business-analyst:context`       | Analyze and summarize project configuration and tech stack                            |
+| `/business-analyst:story`         | Create a user story using the Three-File Pattern (story + technical spec + estimates) |
+| `/business-analyst:decompose`     | Break a story into backend and frontend tasks with Objective + Requirements structure |
+| `/business-analyst:bug`           | Create a structured bug with Description, Repro Steps, Severity, and Impact           |
+| `/business-analyst:pr`            | Generate a structured PR description from completed code changes                      |
+| `/business-analyst:investigate`   | Research a request and produce a findings report before creating work items           |
+| `/business-analyst:release-notes` | Generate release notes from a sprint or list of completed work items                  |
 
 ---
 
-## Folder Structure (This Package)
+## Plugin Structure
 
 ```
 ba-agent-installer/
-├── README.md                          ← You are here
-├── SETUP-CHECKLIST.md                 ← Step-by-step config guide
-├── install.sh                         ← Automated install script
+├── plugin.json                         ← Plugin manifest (auto-detected by VS Code)
+├── README.md                           ← You are here
+├── SETUP-CHECKLIST.md                  ← Step-by-step project config guide
 │
-├── agent/
-│   ├── business-analyst-core.agent.md ← The universal agent (copy to .github/agents/)
-│   └── prompts/                        ← Reusable prompt files (copy to .github/prompts/)
-│       ├── analyze-project-context.prompt.md
-│       ├── create-bug.prompt.md
-│       ├── create-user-story.prompt.md
-│       ├── decompose-story-tasks.prompt.md
-│       ├── investigate-request.prompt.md
-│       └── release-notes.prompt.md
+├── agents/
+│   └── business-analyst-core.agent.md     ← Agent persona, role, defaults, DoR/DoD
 │
-└── documentation/
-    ├── project-config.json            ← Template config (fill in your details)
-    ├── CUSTOMIZATION-GUIDE.md         ← Detailed guide for adapting to any project
-    ├── BA-AGENT-DIAGRAMS.md           ← Architecture diagrams (Mermaid) of how the agent works
-    ├── MCP-DATABASE-SETUP.md          ← Optional: connect agent to live SQL Server databases
+├── skills/                             ← On-demand skill instructions
+│   ├── context/SKILL.md                   ← /business-analyst:context
+│   ├── story/SKILL.md                     ← /business-analyst:story
+│   ├── decompose/SKILL.md                 ← /business-analyst:decompose
+│   ├── bug/SKILL.md                       ← /business-analyst:bug
+│   ├── pr/SKILL.md                        ← /business-analyst:pr
+│   ├── investigate/SKILL.md               ← /business-analyst:investigate
+│   └── release-notes/SKILL.md             ← /business-analyst:release-notes
+│
+└── documentation/                      ← Copy this into each project that uses the agent
+    ├── project-config.json                ← Template config (fill in your details)
+    ├── CUSTOMIZATION-GUIDE.md             ← Detailed guide for adapting to any project
+    ├── BA-AGENT-DIAGRAMS.md           ← Architecture diagrams of how the agent works
+    ├── MCP-DATABASE-SETUP.md          ← Optional: connect agent to live databases
     │
     ├── guides/
     │   ├── QUICK-START-BUSINESS-ANALYST.md
@@ -126,38 +152,46 @@ ba-agent-installer/
 
 ---
 
-## After Installation: Folder Structure in Your Project
+## Project Setup: Folder Structure
+
+After copying `documentation/` into your project:
 
 ```
 <your-project>/
-├── .github/
-│   ├── agents/
-│   │   └── business-analyst-core.agent.md   ← Agent definition
-│   └── prompts/
-│       ├── analyze-project-context.prompt.md
-│       ├── create-bug.prompt.md
-│       ├── create-user-story.prompt.md
-│       ├── decompose-story-tasks.prompt.md
-│       ├── investigate-request.prompt.md
-│       └── release-notes.prompt.md
-│
 └── documentation/
     └── business-analyst-workflow/
-        ├── project-config.json               ← Your project config
+        ├── project-config.json               ← Your project config (required)
+        ├── CUSTOMIZATION-GUIDE.md
         ├── guides/                           ← Process guides
         ├── work-item-templates/              ← Work item templates
         └── catalogs/                         ← Service & component catalogs
+```
+
+Work items the agent creates go in:
+
+```
+<your-project>/
+└── documentation/
+    └── work-items/
+        ├── USER-STORY-*.md
+        ├── TECHNICAL-*.md
+        ├── ESTIMATES-*.md
+        ├── TASK-1-backend-*.md
+        ├── TASK-2-frontend-*.md
+        ├── BUG-*.md
+        └── PR-*.md
 ```
 
 ---
 
 ## Customization
 
-See [SETUP-CHECKLIST.md](SETUP-CHECKLIST.md) for the full list of things to customize.
+See [SETUP-CHECKLIST.md](SETUP-CHECKLIST.md) for the full configuration walkthrough.
 
-The agent is designed around a **core + config** pattern:
+The agent follows a **core + config** pattern:
 
-- `business-analyst-core.agent.md` — universal behavior, never needs editing
+- `agents/business-analyst-core.agent.md` — persona, role, DoR/DoD — never needs editing
+- `skills/<name>/SKILL.md` — per-command instructions, loaded only when that skill is invoked
 - `project-config.json` — all project-specific details live here
 - `catalogs/` — optional but improves estimate accuracy significantly
 
@@ -167,17 +201,17 @@ The agent is designed around a **core + config** pattern:
 
 **Agent doesn't appear in Copilot Chat?**
 
-- Ensure the file is at `.github/agents/business-analyst-core.agent.md`
-- Ensure VS Code GitHub Copilot extension is up to date (v1.99+)
-- Reload VS Code window (`Ctrl+Shift+P` → "Reload Window")
+- Confirm `chat.plugins.enabled` is `true` in VS Code settings
+- Run **MCP: List Servers** or check **Extensions > Agent Plugins — Installed**
+- Reload the VS Code window (`Ctrl+Shift+P` → "Reload Window")
 
 **Agent produces generic work items without using my tech stack?**
 
-- Verify `project-config.json` exists at `documentation/business-analyst-workflow/project-config.json`
+- Verify `project-config.json` exists at `documentation/business-analyst-workflow/project-config.json` in your workspace
 - Check for JSON syntax errors in the config file
-- Try explicitly asking: "Read project-config.json first, then create a story for..."
+- Start with `/business-analyst:context` — the agent will read and confirm your project config before proceeding
 
-**Work item templates are not referenced?**
+**Work item templates not referenced?**
 
 - The agent reads templates from `documentation/business-analyst-workflow/work-item-templates/`
 - Ensure that path exists relative to your workspace root
@@ -186,4 +220,4 @@ The agent is designed around a **core + config** pattern:
 
 ## Questions & Feedback
 
-This agent was built for teams using GitHub Copilot Chat. For customizations beyond what `project-config.json` supports, see the inline comments in `business-analyst-core.agent.md`.
+This agent was built for teams using GitHub Copilot Chat. For customizations beyond what `project-config.json` supports, see `documentation/business-analyst-workflow/CUSTOMIZATION-GUIDE.md` and the inline comments in each `skills/<name>/SKILL.md` file.
