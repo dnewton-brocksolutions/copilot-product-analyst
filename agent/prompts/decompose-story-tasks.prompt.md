@@ -10,7 +10,7 @@ Take an existing user story and decompose it into frontend and backend tasks usi
 ## Story Title Convention (REQUIRED)
 
 - Parent user story title must use: `Application - Action-Oriented Title - Source`
-- Allowed Application values: `Processing MES` or `Processing OEE`
+- Allowed Application values: See `frontend.applications[].name` in `documentation/business-analyst-workflow/project-config.json`
 
 **Reference:** `documentation/business-analyst-workflow/guides/TASK-DECOMPOSITION-GUIDE.md`
 

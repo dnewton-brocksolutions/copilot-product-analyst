@@ -6,7 +6,7 @@ description: "Analyze project context and provide tech stack summary for work it
 Read and analyze the project configuration to provide context for creating work items:
 
 1. **Load Project Config**: Read `documentation/business-analyst-workflow/project-config.json` and summarize:
-   - **Applications**: Available frontend applications (Processing OEE, Processing MES) and their purposes
+   - **Applications**: Available frontend applications (from `frontend.applications[].name`) and their purposes
    - **Tech Stack**: Frontend and backend technologies, versions, patterns
    - **Architecture**: Microservices, databases, communication protocols
    - **Standards**: Estimation units, testing requirements, deployment patterns

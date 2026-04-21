@@ -24,15 +24,15 @@ Keep this **concise** (~25 lines). Include ONLY:
 ## Story Naming Convention (REQUIRED)
 
 - **Title format:** `Application - Action-Oriented Title - Source`
-- **Allowed Application values:** `Processing MES` or `Processing OEE`
-- **Source examples:** `CS001685`, `INC0001234`, `ADO12345`
-- **Example:** `Processing MES - Add Date Acknowledged Column - CS001685`
+- **Allowed Application values:** See `frontend.applications[].name` in `documentation/business-analyst-workflow/project-config.json`
+- **Source examples:** Ticket/incident/work item ID from your work tracking system (e.g., `INC0001234`, `ADO12345`)
+- **Example:** `[Application Name] - Add Date Acknowledged Column - [Source ID]`
 
 ```markdown
 # User Story: [Title]
 
 **Work Item Type:** User Story  
-**Title:** [Processing MES|Processing OEE] - [Action-Oriented Title] - [Source]
+**Title:** [Application from project config] - [Action-Oriented Title] - [Source]
 
 ## Business Context
 
