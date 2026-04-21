@@ -1,4 +1,4 @@
-# Setup Checklist — Business Analyst Agent Plugin
+# Setup Checklist — Product Analyst Agent Plugin
 
 Use this checklist after installing the plugin to configure the agent for your project. Work through it top to bottom — it takes about 30–60 minutes for a new project.
 
@@ -13,7 +13,7 @@ Use this checklist after installing the plugin to configure the agent for your p
 Copy the `documentation/` folder from this repo into your project:
 
 ```
-documentation/  →  <your-project>/documentation/business-analyst-workflow/
+documentation/  →  <your-project>/documentation/product-analyst-workflow/
 ```
 
 This gives you the config template, work item templates, catalog templates, and guides.
@@ -22,7 +22,7 @@ This gives you the config template, work item templates, catalog templates, and 
 
 ## Phase 1: Core Configuration (Required — ~15 min)
 
-Edit `documentation/business-analyst-workflow/project-config.json` and replace every `TODO` field.
+Edit `documentation/product-analyst-workflow/project-config.json` and replace every `TODO` field.
 
 ### 1.1 Project Identity
 
@@ -82,7 +82,7 @@ Edit `documentation/business-analyst-workflow/project-config.json` and replace e
 
 - [ ] Open VS Code
 - [ ] Open GitHub Copilot Chat (`Ctrl+Shift+I` or sidebar)
-- [ ] Select the **Business Analyst** custom mode from the mode picker
+- [ ] Select the **Product Analyst** custom mode from the mode picker
 - [ ] Type: `/context`
 - [ ] Confirm the agent reads your config and reflects the correct stack
 - [ ] Type: `/story Add a login page for users`
@@ -119,7 +119,7 @@ Start from `catalogs/component-catalog.template.md`. For each significant fronte
 
 ## Phase 4: Team Onboarding (~15 min)
 
-- [ ] Share the [QUICK-START-BUSINESS-ANALYST.md](guides/QUICK-START-BUSINESS-ANALYST.md) guide with your team
+- [ ] Share the [QUICK-START-PRODUCT-ANALYST.md](guides/QUICK-START-PRODUCT-ANALYST.md) guide with your team
 - [ ] Review the [TASK-DECOMPOSITION-GUIDE.md](guides/TASK-DECOMPOSITION-GUIDE.md) so everyone understands the Backend → Frontend task order
 - [ ] Review the [ESTIMATES-SEPARATION-GUIDE.md](guides/ESTIMATES-SEPARATION-GUIDE.md) so everyone knows estimates belong in separate files
 - [ ] Run a quick demo: create a sample story and decompose it together
@@ -135,7 +135,7 @@ These are optional but can improve the agent's quality over time.
 - [ ] Add `definitionOfDone.additionalCriteria` for project-specific DoD requirements
 - [ ] **Add MCP database access** — lets the agent query live databases during task creation so backend task requirements are grounded in actual table/procedure definitions rather than guesswork
 
-  **How it works:** MCP tools are registered in VS Code and made available to all agents automatically. The BA agent knows how and when to call them — you just need a compatible MCP server running and registered.
+  **How it works:** MCP tools are registered in VS Code and made available to all agents automatically. The PA agent knows how and when to call them — you just need a compatible MCP server running and registered.
 
   **Setup steps:**
   1. Set up an MCP server that can connect to your database (build your own or use an existing one compatible with your DB engine)
@@ -153,20 +153,20 @@ These are optional but can improve the agent's quality over time.
 
 | What                | Where                                                                            |
 | ------------------- | -------------------------------------------------------------------------------- |
-| Project config      | `documentation/business-analyst-workflow/project-config.json`                    |
-| Service catalog     | `documentation/business-analyst-workflow/catalogs/service-catalog.md`            |
-| Component catalog   | `documentation/business-analyst-workflow/catalogs/component-catalog.md`          |
-| Work item templates | `documentation/business-analyst-workflow/work-item-templates/`                   |
+| Project config      | `documentation/product-analyst-workflow/project-config.json`                    |
+| Service catalog     | `documentation/product-analyst-workflow/catalogs/service-catalog.md`            |
+| Component catalog   | `documentation/product-analyst-workflow/catalogs/component-catalog.md`          |
+| Work item templates | `documentation/product-analyst-workflow/work-item-templates/`                   |
 | Work item output    | `documentation/work-items/`                                                      |
-| Quick start guide   | `documentation/business-analyst-workflow/guides/QUICK-START-BUSINESS-ANALYST.md` |
-| Agent definition    | `.github/agents/business-analyst-core.agent.md`                                  |
+| Quick start guide   | `documentation/product-analyst-workflow/guides/QUICK-START-PRODUCT-ANALYST.md` |
+| Agent definition    | `.github/agents/product-analyst-core.agent.md`                                  |
 
 ---
 
 ## Common Problems
 
 **Agent doesn't load project config?**
-→ Check that `project-config.json` is at `documentation/business-analyst-workflow/project-config.json` relative to your workspace root.
+→ Check that `project-config.json` is at `documentation/product-analyst-workflow/project-config.json` relative to your workspace root.
 
 **JSON parse error?**
 → Paste your `project-config.json` into [jsonlint.com](https://jsonlint.com/) to find syntax errors.
@@ -175,4 +175,4 @@ These are optional but can improve the agent's quality over time.
 → Start a fresh Copilot Chat session, then explicitly say: _"Read project-config.json before we begin."_
 
 **Agent not found in Copilot Chat?**
-→ Ensure `.github/agents/business-analyst-core.agent.md` exists and VS Code extension is up to date. Reload window.
+→ Ensure `.github/agents/product-analyst-core.agent.md` exists and VS Code extension is up to date. Reload window.

@@ -8,7 +8,7 @@ Create a bug work item following the project's bug format.
 
 ## Before Creating
 
-Load `documentation/business-analyst-workflow/project-config.json` to determine:
+Load `documentation/product-analyst-workflow/project-config.json` to determine:
 
 - **Area Path** — from `workTracking.defaultAreaPath`
 - **Application tags** — from `frontend.applications[].name`

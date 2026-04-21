@@ -1,4 +1,4 @@
-# Quick Start Guide: Business Analyst Work Item Generation
+# Quick Start Guide: Product Analyst Work Item Generation
 
 **One-page reference for creating consistent, complete work items**
 

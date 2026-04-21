@@ -19,7 +19,7 @@ If the request is vague, ask:
 
 ### 2. Understand the Domain
 
-Read `documentation/business-analyst-workflow/project-config.json` to identify:
+Read `documentation/product-analyst-workflow/project-config.json` to identify:
 
 - Which application or service is involved
 - Relevant tech stack (framework, ORM, API protocol)

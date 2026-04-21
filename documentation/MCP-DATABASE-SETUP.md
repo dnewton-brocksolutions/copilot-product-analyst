@@ -1,6 +1,6 @@
 # MCP Database Access — Setup Guide
 
-> **What this is:** Instructions for connecting the Business Analyst agent to your SQL Server databases via the Model Context Protocol (MCP). This is optional but enables the agent to investigate live database schema and business logic during work item creation.
+> **What this is:** Instructions for connecting the Product Analyst agent to your SQL Server databases via the Model Context Protocol (MCP). This is optional but enables the agent to investigate live database schema and business logic during work item creation.
 
 ---
 
@@ -18,7 +18,7 @@ Without MCP, the agent writes work items based only on what you tell it. With MC
 ## Overview: How It Works
 
 ```
-GitHub Copilot (BA Agent)
+GitHub Copilot (PA Agent)
         │
         │ calls MCP tools (e.g. ListTables, DescribeTable, ReadData)
         ▼
@@ -146,7 +146,7 @@ Add your MCP server(s) to `.vscode/mcp.json` in your project:
 
 ## Step 3: Update project-config.json
 
-Tell the BA agent that MCP database access is available. In `documentation/business-analyst-workflow/project-config.json`:
+Tell the PA agent that MCP database access is available. In `documentation/product-analyst-workflow/project-config.json`:
 
 ```json
 "database": {
@@ -176,14 +176,14 @@ This is what triggers the agent to proactively use MCP during task decomposition
 
 1. Reload VS Code window (`Ctrl+Shift+P` → "Reload Window")
 2. Open GitHub Copilot Chat
-3. Type: `@business-analyst Use MCP to list the tables in MainDB`
+3. Type: `@product-analyst Use MCP to list the tables in MainDB`
 4. The agent should call `mcp_mssql-maindb_ListTables` and return a table list
 
 ---
 
 ## Step 5: Update the QUICK-START guide (optional)
 
-If you want your team to know MCP is available, add a note to `documentation/business-analyst-workflow/guides/QUICK-START-BUSINESS-ANALYST.md` describing which databases are accessible and the typical investigation workflow.
+If you want your team to know MCP is available, add a note to `documentation/product-analyst-workflow/guides/QUICK-START-PRODUCT-ANALYST.md` describing which databases are accessible and the typical investigation workflow.
 
 ---
 

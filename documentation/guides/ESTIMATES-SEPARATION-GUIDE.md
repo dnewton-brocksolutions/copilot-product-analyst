@@ -1,4 +1,4 @@
-# Business Analyst Mode - Updated Instructions Summary
+# Product Analyst Mode - Updated Instructions Summary
 
 ## Recent Updates to Best Practices
 
@@ -51,7 +51,7 @@ ESTIMATES-[feature].md:
 
 ---
 
-## Key Changes for Business Analysts
+## Key Changes for Product Analysts
 
 ### 1. Task Documents
 
@@ -203,7 +203,7 @@ ESTIMATES-[feature].md:
 
 ```
 documentation/
-├─ QUICK-START-BUSINESS-ANALYST.md (updated)
+├─ QUICK-START-PRODUCT-ANALYST.md (updated)
 │  └─ Now includes "Estimates: Keep Separate" section
 │  └─ Updated quality checklist
 │
@@ -266,6 +266,6 @@ A: Developer or PM can add actual hours and notes. Helpful for tracking estimate
 
 ## Contacts & Questions
 
-- See QUICK-START-BUSINESS-ANALYST.md for detailed guidance
+- See QUICK-START-PRODUCT-ANALYST.md for detailed guidance
 - See ESTIMATES-TEMPLATE.md for structure and examples
 - Check work-items/ directory for real examples

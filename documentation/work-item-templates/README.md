@@ -144,4 +144,4 @@ These templates should be updated when:
 - ADO field requirements change
 - New checklists or best practices emerge
 
-**Template Owner:** Business Analyst role / Team Lead
+**Template Owner:** Product Analyst role / Team Lead

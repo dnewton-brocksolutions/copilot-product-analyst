@@ -352,7 +352,7 @@ Estimates are based on:
 
 ## References
 
-- **QUICK-START guide:** `documentation/QUICK-START-BUSINESS-ANALYST.md`
+- **QUICK-START guide:** `documentation/QUICK-START-PRODUCT-ANALYST.md`
 - **Task templates:** `documentation/work-item-templates/`
 - **Example estimates:** Look in `work-items/` directory for completed features
 

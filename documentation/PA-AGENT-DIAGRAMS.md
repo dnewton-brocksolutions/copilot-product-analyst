@@ -1,16 +1,16 @@
-# Business Analyst Agent - Visual Diagrams
+# Product Analyst Agent - Visual Diagrams
 
-> Visual reference for how the Business Analyst AI agent works, its workflow, structure, and outputs.
+> Visual reference for how the Product Analyst AI agent works, its workflow, structure, and outputs.
 
 ---
 
 ## 1. "Architecture"
 
-Overview of all components the BA agent uses to generate work items.
+Overview of all components the PA agent uses to generate work items.
 
 ```mermaid
 graph TB
-    subgraph Agent["🤖 Business Analyst Agent (GitHub Copilot Chatmode)"]
+    subgraph Agent["🤖 Product Analyst Agent (GitHub Copilot Chatmode)"]
         Core["Core System Prompt<br/><i>Role, Goals, Approach,<br/>Output Formats, DoR/DoD</i>"]
     end
 
@@ -221,7 +221,7 @@ flowchart TD
 
 Available slash commands and what each produces.
 
-Current prompt sources: `.github/agents/business-analyst.agent.md` and `.github/agents/business-analyst-core.agent.md`.
+Current prompt sources: `.github/agents/product-analyst.agent.md` and `.github/agents/product-analyst-core.agent.md`.
 
 ```mermaid
 flowchart LR
@@ -263,11 +263,11 @@ flowchart LR
 
 ## 6. Repository Structure
 
-File organization for all BA workflow resources.
+File organization for all PA workflow resources.
 
 ```mermaid
 graph TB
-    subgraph Folder["📁 documentation/business-analyst-workflow/"]
+    subgraph Folder["📁 documentation/product-analyst-workflow/"]
         README["README.md<br/><i>Overview & navigation</i>"]
         Config["project-config.json<br/><i>Tech stack, apps, standards</i>"]
         Custom["CUSTOMIZATION-GUIDE.md<br/><i>Adapt for new projects</i>"]

@@ -177,7 +177,7 @@ Track when and by whom coil requests are acknowledged for audit and workflow pur
 - **`frontend-task-simple.md`** - For frontend implementation tasks
 - **`business-focused-task-template.md`** - Generic task template
 
-**Location:** `documentation/business-analyst-workflow/work-item-templates/`
+**Location:** `documentation/product-analyst-workflow/work-item-templates/`
 
 ## Future Enhancements
 
@@ -189,5 +189,5 @@ Track when and by whom coil requests are acknowledged for audit and workflow pur
 
 Refer to:
 
-- [QUICK-START-BUSINESS-ANALYST.md](../guides/QUICK-START-BUSINESS-ANALYST.md) - Complete workflow guide
+- [QUICK-START-PRODUCT-ANALYST.md](../guides/QUICK-START-PRODUCT-ANALYST.md) - Complete workflow guide
 - [work-item-templates/README.md](../work-item-templates/README.md) - Template selection guide

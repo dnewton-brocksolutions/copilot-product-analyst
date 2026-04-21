@@ -14,12 +14,12 @@ Create a user story following the **Three-File Pattern**.
 2. **Technical Spec** (`TECHNICAL-[brief-title].md`) - Implementation details, ~70 lines
 3. **Estimates** (`ESTIMATES-[brief-title].md`) - Hour breakdown, ~40 lines
 
-**Reference templates:** `documentation/business-analyst-workflow/work-item-templates/`
+**Reference templates:** `documentation/product-analyst-workflow/work-item-templates/`
 
 ## Story Naming Convention (REQUIRED)
 
 - **Title format:** `Application - Action-Oriented Title - Source`
-- **Allowed Application values:** See `frontend.applications[].name` in `documentation/business-analyst-workflow/project-config.json`
+- **Allowed Application values:** See `frontend.applications[].name` in `documentation/product-analyst-workflow/project-config.json`
 - **Source:** Ticket/incident/work item ID from your work tracking system (e.g., `INC0001234`, `ADO12345`)
 - **Example:** `[Application Name] - Add Date Acknowledged Column - [Source ID]`
 
@@ -75,7 +75,7 @@ Include:
 
 ## Before Creating Files
 
-1. **Read project context**: Load `documentation/business-analyst-workflow/project-config.json`
-2. **Check templates**: Reference `documentation/business-analyst-workflow/work-item-templates/`
+1. **Read project context**: Load `documentation/product-analyst-workflow/project-config.json`
+2. **Check templates**: Reference `documentation/product-analyst-workflow/work-item-templates/`
 
 **Output**: Three separate markdown files in `documentation/work-items/`

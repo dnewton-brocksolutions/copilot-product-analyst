@@ -1,15 +1,15 @@
-# Customization Guide: Business Analyst Chatmode
+# Customization Guide: Product Analyst Chatmode
 
-> **Purpose:** Instructions for adapting the Business Analyst chatmode for new projects  
+> **Purpose:** Instructions for adapting the Product Analyst chatmode for new projects  
 > **Last Updated:** 2025-10-21
 
 ---
 
 ## Overview
 
-The Business Analyst chatmode system consists of:
+The Product Analyst chatmode system consists of:
 
-1. **`business-analyst-core.chatmode.md`** - Universal BA guidance (tech-stack agnostic)
+1. **`product-analyst-core.chatmode.md`** - Universal PA guidance (tech-stack agnostic)
 2. **`project-config.json`** - Project-specific configuration (tech stack, tools, standards)
 3. **Catalogs** - Service catalogs, component catalogs, pattern libraries
 4. **Templates** - Reusable work item templates
@@ -25,10 +25,10 @@ This design allows **one chatmode to serve multiple projects** by loading projec
 
 ```bash
 # From template/reference project
-cp .github/chatmodes/business-analyst-core.chatmode.md <new-project>/.github/chatmodes/
+cp .github/chatmodes/product-analyst-core.chatmode.md <new-project>/.github/chatmodes/
 cp documentation/project-config.template.json <new-project>/documentation/project-config.json
 cp -r documentation/work-item-templates/ <new-project>/documentation/
-cp documentation/QUICK-START-BUSINESS-ANALYST.md <new-project>/documentation/
+cp documentation/QUICK-START-PRODUCT-ANALYST.md <new-project>/documentation/
 ```
 
 ### 2. Configure Your Project (15-30 minutes)
@@ -561,7 +561,7 @@ Create a simple tracking spreadsheet:
 
 ## Getting Help
 
-- **Quick Start:** `documentation/QUICK-START-BUSINESS-ANALYST.md`
+- **Quick Start:** `documentation/QUICK-START-PRODUCT-ANALYST.md`
 - **Templates:** `documentation/work-item-templates/README.md`
 - **Catalogs:** `documentation/catalogs/README.md`
 - **Issues:** Open an issue in the template repo or contact maintainer

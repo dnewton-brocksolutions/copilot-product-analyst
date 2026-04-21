@@ -8,13 +8,13 @@ Read and analyze the project configuration to provide context for creating work 
 
 ## Steps
 
-1. **Load Project Config**: Read `documentation/business-analyst-workflow/project-config.json` and summarize:
+1. **Load Project Config**: Read `documentation/product-analyst-workflow/project-config.json` and summarize:
    - **Applications**: Available frontend applications (from `frontend.applications[].name`) and their purposes
    - **Tech Stack**: Frontend and backend technologies, versions, patterns
    - **Architecture**: Microservices, databases, communication protocols
    - **Standards**: Estimation units, testing requirements, deployment patterns
 
-2. **Component Catalogs**: Check `documentation/business-analyst-workflow/catalogs/` for:
+2. **Component Catalogs**: Check `documentation/product-analyst-workflow/catalogs/` for:
    - Existing UI components that can be reused
    - Service patterns and APIs already available
    - Common implementation approaches

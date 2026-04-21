@@ -1,6 +1,6 @@
 # Component and Service Catalogs
 
-This directory contains your project's catalogs. These catalogs are read by the Business Analyst agent when creating work items to produce accurate effort estimates and suggest component reuse.
+This directory contains your project's catalogs. These catalogs are read by the Product Analyst agent when creating work items to produce accurate effort estimates and suggest component reuse.
 
 ## Catalog Files
 

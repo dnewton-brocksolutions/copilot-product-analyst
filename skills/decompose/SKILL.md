@@ -9,7 +9,7 @@ Break a user story into implementation tasks.
 ## Before Decomposing
 
 1. **Read the story file** — load the specified story or search `documentation/work-items/` for the relevant user story markdown file
-2. **Read project config** — load `documentation/business-analyst-workflow/project-config.json` for tech stack, estimation units, and standards
+2. **Read project config** — load `documentation/product-analyst-workflow/project-config.json` for tech stack, estimation units, and standards
 
 ## Task Template (per task)
 

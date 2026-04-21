@@ -93,4 +93,4 @@ When a new service is created, add it here within one sprint. Include:
 3. Key endpoints or methods
 4. Baseline estimate for extending it
 
-This keeps the catalog current and ensures the BA agent produces accurate estimates.
+This keeps the catalog current and ensures the PA agent produces accurate estimates.

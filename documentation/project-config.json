@@ -1,9 +1,9 @@
 {
   "_instructions": [
     "READ ME FIRST: This is a TEMPLATE. Replace every TODO with your project's actual values.",
-    "The Business Analyst agent reads this file before creating any work item.",
+    "The Product Analyst agent reads this file before creating any work item.",
     "Required fields are marked with TODO. Optional fields can be removed if not applicable.",
-    "After editing, test by opening Copilot Chat and typing: @business-analyst /story Add a login page"
+    "After editing, test by opening Copilot Chat and typing: @product-analyst /story Add a login page"
   ],
 
   "projectName": "TODO: Your Project Name",
@@ -16,7 +16,7 @@
       {
         "name": "TODO: AppName (e.g. AdminPortal)",
         "description": "TODO: What this app does and who uses it",
-        "catalogPath": "documentation/business-analyst-workflow/catalogs/component-catalog.md"
+        "catalogPath": "documentation/product-analyst-workflow/catalogs/component-catalog.md"
       }
     ],
     "_note_applications": "Add one entry per distinct frontend app or module. Remove this field if you only have one.",
@@ -31,7 +31,7 @@
     "version": "TODO: e.g. .NET 8.0 | Java 21 | Python 3.12",
     "architecture": "TODO: Microservices | Monolith | Serverless | Modular Monolith",
     "protocol": "TODO: gRPC | REST | GraphQL | tRPC | mixed",
-    "catalogPath": "documentation/business-analyst-workflow/catalogs/service-catalog.md",
+    "catalogPath": "documentation/product-analyst-workflow/catalogs/service-catalog.md",
     "serviceCount": "TODO: approximate number of backend services or modules",
     "servicePattern": {
       "_note": "Describe the naming or structural pattern your services follow. Remove this section if not applicable.",
@@ -125,7 +125,7 @@
   },
 
   "catalogs": {
-    "directory": "documentation/business-analyst-workflow/catalogs/",
+    "directory": "documentation/product-analyst-workflow/catalogs/",
     "files": [
       {
         "name": "service-catalog.md",
@@ -142,8 +142,8 @@
 
   "documentation": {
     "workItemsPath": "documentation/work-items/",
-    "templatesPath": "documentation/business-analyst-workflow/work-item-templates/",
-    "guidesPath": "documentation/business-analyst-workflow/guides/"
+    "templatesPath": "documentation/product-analyst-workflow/work-item-templates/",
+    "guidesPath": "documentation/product-analyst-workflow/guides/"
   },
 
   "estimationGuidelines": {
