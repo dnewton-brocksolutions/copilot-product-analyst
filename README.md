@@ -16,24 +16,40 @@ A VS Code **agent plugin** that provides an AI-powered Product Analyst mode for 
 
 ## Install the Plugin (2 minutes)
 
-> **Prerequisite:** GitHub Copilot with agent plugin support (VS Code 1.99+, `chat.plugins.enabled: true`)
+> **Prerequisite:** Claude Code (bundled in VS Code Copilot Chat 0.45+) or the standalone Claude Code CLI.
 
-### Option A — Install from Git URL (recommended)
+### Option A — Install from GitHub (recommended)
 
-1. Open the Command Palette (`Ctrl+Shift+P`)
-2. Run **Chat: Install Plugin From Source**
-3. Enter: `https://github.com/dnewton-brocksolutions/copilot-product-analyst`
-4. VS Code clones and installs it — the Product Analyst agent is now available globally
+In Claude Code (or the Copilot Chat panel), run:
 
-### Option B — Use a local clone
+```
+/plugin marketplace add dnewton-brocksolutions/copilot-product-analyst
+```
 
-Add the cloned directory to your VS Code settings:
+Then install the plugin:
 
-```json
-// settings.json
-"chat.pluginLocations": {
-    "/path/to/copilot-product-analyst": true
-}
+```
+/plugin install product-analyst@dnewton-brocksolutions-copilot-product-analyst
+```
+
+### Option B — Install from a local clone
+
+Clone this repo, then add it as a local marketplace:
+
+```
+/plugin marketplace add /path/to/copilot-product-analyst
+```
+
+Then install:
+
+```
+/plugin install product-analyst@copilot-product-analyst
+```
+
+### Option C — Load for a single session (no install)
+
+```
+claude --plugin-dir /path/to/copilot-product-analyst
 ```
 
 ---
@@ -91,8 +107,8 @@ The agent should read your `project-config.json` and summarize your tech stack. 
 
 Each skill loads its detailed instructions on demand when you invoke it. Skills are automatically prefixed with the plugin name when installed via the plugin.
 
-| Slash Command                     | Description                                                                           |
-| --------------------------------- | ------------------------------------------------------------------------------------- |
+| Slash Command                    | Description                                                                           |
+| -------------------------------- | ------------------------------------------------------------------------------------- |
 | `/product-analyst:context`       | Analyze and summarize project configuration and tech stack                            |
 | `/product-analyst:story`         | Create a user story using the Three-File Pattern (story + technical spec + estimates) |
 | `/product-analyst:decompose`     | Break a story into backend and frontend tasks with Objective + Requirements structure |
@@ -107,7 +123,9 @@ Each skill loads its detailed instructions on demand when you invoke it. Skills 
 
 ```
 copilot-product-analyst/
-├── plugin.json                         ← Plugin manifest (auto-detected by VS Code)
+├── .claude-plugin/
+│   ├── plugin.json                        ← Plugin manifest (name, version, author)
+│   └── marketplace.json                   ← Marketplace catalog (required for /plugin marketplace add)
 ├── README.md                           ← You are here
 ├── SETUP-CHECKLIST.md                  ← Step-by-step project config guide
 │
@@ -199,11 +217,15 @@ The agent follows a **core + config** pattern:
 
 ## Troubleshooting
 
-**Agent doesn't appear in Copilot Chat?**
+**"no plugins found … does not appear to be a valid plugin marketplace"?**
 
-- Confirm `chat.plugins.enabled` is `true` in VS Code settings
-- Run **MCP: List Servers** or check **Extensions > Agent Plugins — Installed**
-- Reload the VS Code window (`Ctrl+Shift+P` → "Reload Window")
+- The marketplace is defined at `.claude-plugin/marketplace.json`, not at the repo root. Make sure you cloned the latest version of this repo.
+- Use `/plugin marketplace add <path>` pointing to the repo directory (not to a specific file).
+
+**Agent skills don't appear after installing?**
+
+- Run `/reload-plugins` inside Claude Code to pick up newly installed plugins.
+- Verify the plugin is listed in `/plugin` → Installed tab.
 
 **Agent produces generic work items without using my tech stack?**
 
