@@ -4,33 +4,33 @@
 
 ---
 
-## 1. "Architecture"
+## 1. Architecture
 
 Overview of all components the PA agent uses to generate work items.
 
 ```mermaid
 graph TB
-    subgraph Agent["🤖 Product Analyst Agent (GitHub Copilot Chatmode)"]
-        Core["Core System Prompt<br/><i>Role, Goals, Approach,<br/>Output Formats, DoR/DoD</i>"]
+    subgraph Agent["🤖 Product Analyst Agent"]
+        Core["Core Agent Definition<br/><i>Role, Goals, Approach,<br/>Output Formats, DoR/DoD</i>"]
     end
 
     subgraph Inputs["📥 Inputs"]
         Stakeholder["👤 Stakeholder Request"]
-        Commands["⌨️ Commands<br/>/story /task /decompose<br/>/bug /refine /estimate"]
+        Commands["⌨️ Slash Commands<br/>/pa-story /pa-decompose<br/>/pa-bug /pa-investigate<br/>/pa-pr /pa-push-ado"]
     end
 
     subgraph Config["⚙️ Project Configuration"]
-        ProjConfig["project-config.json<br/><i>Tech stack, apps, standards,<br/>estimation guidelines</i>"]
+        ProjConfig["project-config.json<br/><i>Tech stack, apps,<br/>work tracking, standards</i>"]
     end
 
     subgraph Resources["📚 Reference Resources"]
         Templates["Work Item Templates<br/><i>Story, Backend Task, Frontend Task,<br/>Spike, Test Plan, Estimates</i>"]
+        Codebase["Project Codebase<br/><i>Services, components,<br/>patterns (explored live)</i>"]
     end
 
-    subgraph DB["🗄️ MCP Database Tools"]
-        MES10["MES10 (Legacy)"]
-        MES20["MES20 (Modern)"]
-        OtherDB["ProcBar / ProcMMI /<br/>LIMS / xferERP"]
+    subgraph DB["🗄️ MCP Tools (Optional)"]
+        DBAccess["Database MCP<br/><i>Schema, stored procs,<br/>live data queries</i>"]
+        ADOAccess["Azure DevOps MCP<br/><i>Create work items,<br/>set parent links</i>"]
     end
 
     subgraph Outputs["📤 Generated Work Items"]
@@ -57,8 +57,9 @@ graph TB
 **Key points:**
 
 - The agent always reads `project-config.json` first to understand tech stack
-- MCP database tools allow live schema/data investigation
 - The agent explores the project codebase directly to identify existing services and components
+- MCP database tools allow live schema/data investigation (optional, configured per project)
+- Azure DevOps MCP enables pushing work items directly to ADO (optional)
 - Three output files are generated per feature (story, technical spec, estimates)
 
 ---
@@ -73,37 +74,26 @@ flowchart TD
     B --> C{"❓ Requirements<br/>Clear?"}
     C -->|No| D["Ask Clarifying Questions<br/><i>Business problem, user role,<br/>outcome, constraints, app</i>"]
     D --> C
-    C -->|Yes| E["🔍 Check Reference Resources"]
+    C -->|Yes| E["🔍 Investigate Existing System"]
 
-    E --> E1["Codebase Exploration<br/><i>Existing services & components?</i>"]
-    E --> E2["MCP Database Tools<br/><i>Existing tables, validation,<br/>stored procedures?</i>"]
+    E --> E1["Codebase Exploration<br/><i>Existing services & components</i>"]
+    E --> E2["MCP Database Tools (Optional)<br/><i>Tables, constraints, procedures</i>"]
 
-    E1 --> F["📝 Define Scope"]
+    E1 --> F["📝 Define Scope<br/><i>In-scope + out-of-scope</i>"]
     E2 --> F
 
-    F --> F1["In-Scope Items"]
-    F --> F2["Out-of-Scope Items"]
-
-    F1 --> G["✍️ Write Acceptance Criteria<br/><i>Given / When / Then format</i>"]
-    F2 --> G
-
+    F --> G["✍️ Write Acceptance Criteria<br/><i>Given / When / Then format</i>"]
     G --> H["📋 Create Work Items"]
 
     H --> H1["📄 User Story<br/><i>Business context + AC<br/>(concise, scannable)</i>"]
     H --> H2["📄 Technical Spec<br/><i>Requirements + Task Breakdown<br/>+ Definition of Done</i>"]
     H --> H3["📄 Estimates File<br/><i>Hours by component,<br/>phase breakdown, risks</i>"]
 
-    H1 --> I["✅ Verify Quality"]
+    H1 --> I["✅ Verify Quality<br/><i>DoR + DoD + No estimates in tasks</i>"]
     H2 --> I
     H3 --> I
 
-    I --> I1["DoR Checklist"]
-    I --> I2["DoD Checklist"]
-    I --> I3["No Estimates in Tasks"]
-
-    I1 --> J["🚀 Ready for ADO Entry<br/>& Sprint Planning"]
-    I2 --> J
-    I3 --> J
+    I --> J["🚀 Ready for ADO Entry<br/>& Sprint Planning"]
 
     style A fill:#F5A623,color:#fff
     style B fill:#7B68EE,color:#fff
@@ -118,13 +108,13 @@ flowchart TD
 
 1. Always load project context **before** asking questions
 2. Clarify requirements iteratively until scope is clear
-3. Check all three resource types (services, components, database)
+3. Investigate existing implementation before writing requirements
 4. Define explicit in-scope and out-of-scope boundaries
 5. Validate against DoR/DoD checklists before finalizing
 
 ---
 
-## 3. Two-Document Pattern
+## 3. Three-Document Pattern
 
 How each feature produces three separate files with distinct responsibilities.
 
@@ -216,43 +206,49 @@ flowchart TD
 
 Available slash commands and what each produces.
 
-Current prompt sources: `.github/agents/product-analyst.agent.md` and `.github/agents/product-analyst-core.agent.md`.
-
 ```mermaid
 flowchart LR
-    subgraph Commands["Agent Commands"]
-        C1["/story"]
-        C2["/task"]
-        C3["/decompose"]
-        C4["/bug"]
-        C5["/refine"]
-        C6["/estimate"]
+    subgraph Commands["Slash Commands"]
+        C1["/pa-story"]
+        C2["/pa-decompose"]
+        C3["/pa-bug"]
+        C4["/pa-investigate"]
+        C5["/pa-pr"]
+        C6["/pa-release-notes"]
+        C7["/pa-push-ado"]
+        C8["/pa-context"]
     end
 
-    C1 -->|"New feature<br/>or user need"| O1["User Story/PBI + AC<br/><i>Business value focused</i>"]
-    C2 -->|"Implementation<br/>work"| O2["Task(s)<br/><i>Objective + Requirements</i>"]
-    C3 -->|"Story exists,<br/>need breakdown"| O3["Backend + Frontend Tasks<br/><i>Using simple templates</i>"]
-    C4 -->|"Something<br/>is broken"| O4["ADO Bug<br/><i>Description + Repro + Fix</i>"]
-    C5 -->|"Work item<br/>lacks detail"| O5["Improved Work Item<br/><i>Clarified scope + criteria</i>"]
-    C6 -->|"Need time<br/>estimates only"| O6["Hour Estimates<br/><i>Breakdown + rationale</i>"]
+    C1 -->|"New feature<br/>or user need"| O1["User Story + Technical Spec<br/>+ Estimates<br/><i>Three-file pattern</i>"]
+    C2 -->|"Story exists,<br/>need breakdown"| O2["Backend + Frontend Tasks<br/><i>Using simple templates</i>"]
+    C3 -->|"Something<br/>is broken"| O3["Bug Work Item<br/><i>Description + Repro + Fix</i>"]
+    C4 -->|"Need research<br/>before planning"| O4["Investigation Summary<br/><i>Findings + recommendations</i>"]
+    C5 -->|"PR is ready<br/>for review"| O5["PR Description<br/><i>Summary + changes + testing</i>"]
+    C6 -->|"Sprint or<br/>release done"| O6["Release Notes<br/><i>Features + fixes + breaking</i>"]
+    C7 -->|"Push confirmed<br/>items to ADO"| O7["ADO Work Items<br/><i>Created with parent links</i>"]
+    C8 -->|"Check agent<br/>config"| O8["Config Summary<br/><i>Tech stack + standards</i>"]
 
     style Commands fill:#4A90D9,color:#fff
     style O1 fill:#2ECC71,color:#fff
     style O2 fill:#2ECC71,color:#fff
-    style O3 fill:#2ECC71,color:#fff
-    style O4 fill:#E74C3C,color:#fff
+    style O3 fill:#E74C3C,color:#fff
+    style O4 fill:#9B59B6,color:#fff
     style O5 fill:#F39C12,color:#fff
-    style O6 fill:#9B59B6,color:#fff
+    style O6 fill:#F39C12,color:#fff
+    style O7 fill:#7B68EE,color:#fff
+    style O8 fill:#95A5A6,color:#fff
 ```
 
-| Command      | When to Use                         | Output                                            |
-| ------------ | ----------------------------------- | ------------------------------------------------- |
-| `/story`     | Stakeholder describes a new feature | User Story/PBI with business context + AC         |
-| `/task`      | Breaking down implementation work   | Task(s) with Objective + Requirements             |
-| `/decompose` | Story exists, need full breakdown   | Backend + Frontend tasks using simple templates   |
-| `/bug`       | Something is broken                 | Single ADO bug with Description, Repro Steps, Fix |
-| `/refine`    | Work item lacks detail or clarity   | Improved work item with clarified scope/criteria  |
-| `/estimate`  | Need timing without full work items | Hour-based estimates with rationale and breakdown |
+| Command             | When to Use                          | Output                                          |
+| ------------------- | ------------------------------------ | ----------------------------------------------- |
+| `/pa-story`         | Stakeholder describes a new feature  | User Story + Technical Spec + Estimates         |
+| `/pa-decompose`     | Story exists, need task breakdown    | Backend + Frontend tasks using simple templates |
+| `/pa-bug`           | Something is broken                  | Bug with Description, Repro Steps, Fix          |
+| `/pa-investigate`   | Need research before planning        | Investigation summary with findings             |
+| `/pa-pr`            | PR is ready for review               | PR description with summary and testing notes   |
+| `/pa-release-notes` | Sprint or release is complete        | Release notes with features, fixes, breaking    |
+| `/pa-push-ado`      | Work items confirmed, push to ADO    | Work items created in ADO with parent links     |
+| `/pa-context`       | Verify agent is configured correctly | Summary of loaded project config and tech stack |
 
 ---
 
@@ -260,53 +256,44 @@ flowchart LR
 
 File organization for all PA workflow resources.
 
-```mermaid
-graph TB
-    subgraph Folder["📁 documentation/product-analyst-workflow/"]
-        README["README.md<br/><i>Overview & navigation</i>"]
-        Config["project-config.json<br/><i>Tech stack, apps, standards</i>"]
-        Custom["CUSTOMIZATION-GUIDE.md<br/><i>Adapt for new projects</i>"]
-
-        subgraph Guides["📁 guides/"]
-            QS["QUICK-START.md<br/><i>One-page reference</i>"]
-            ESG["ESTIMATES-SEPARATION-GUIDE.md"]
-            EST["ESTIMATES-TEMPLATE.md"]
-            RN["RELEASE-NOTES-GUIDE.md"]
-        end
-
-        subgraph Templates["📁 work-item-templates/"]
-            UST["user-story-template.md"]
-            BET["backend-task-template.md"]
-            FET["frontend-task-template.md"]
-            SPT["spike-task-template.md"]
-            TPT["test-plan-task-template.md"]
-            TST["technical-spec-template.md"]
-        end
-
-        subgraph Items["📁 archive/items/"]
-            Tasks["tasks/"]
-            Stories["user-stories/"]
-            Bugs["bugs/"]
-            Estimates["estimates/"]
-            ReleaseNotes["release-notes/"]
-        end
-    end
-
-    Config -.->|"Agent reads first"| QS
-    QS -.->|"References"| Templates
-    Templates -.->|"Produces"| Items
-
-    style Folder fill:#f9f9f9,color:#333
-    style Guides fill:#4A90D9,color:#fff
-    style Templates fill:#7B68EE,color:#fff
-    style Items fill:#E67E22,color:#fff
+```text
+repository-root/
+├── .github/
+│   ├── agents/
+│   │   └── product-analyst-core.agent.md
+│   └── prompts/
+│       ├── pa-context.prompt.md
+│       ├── pa-story.prompt.md
+│       ├── pa-decompose.prompt.md
+│       ├── pa-bug.prompt.md
+│       ├── pa-investigate.prompt.md
+│       ├── pa-pr.prompt.md
+│       ├── pa-release-notes.prompt.md
+│       └── pa-push-ado.prompt.md
+└── documentation/
+    ├── project-config.json
+    ├── CUSTOMIZATION-GUIDE.md
+    ├── MCP-SETUP.md
+    ├── PA-AGENT-DIAGRAMS.md
+    ├── guides/
+    │   ├── QUICK-START-PRODUCT-ANALYST.md
+    │   ├── TASK-DECOMPOSITION-GUIDE.md
+    │   ├── ESTIMATES-SEPARATION-GUIDE.md
+    │   └── ESTIMATES-TEMPLATE.md
+    └── work-item-templates/
+        ├── business-focused-user-story-template.md
+        ├── business-focused-task-template.md
+        ├── backend-task-simple.md
+        ├── frontend-task-simple.md
+        ├── spike-task-template.md
+        └── test-plan-task-template.md
 ```
 
 **Data flow:**
 
-1. Agent reads `project-config.json` first (tech stack context)
-2. Quick Start guide references templates
-3. Templates are used to produce work items in `archive/items/`
+1. Agent loads project context from `documentation/project-config.json`
+2. Slash commands route to prompt files in `.github/prompts/`
+3. Prompts use `documentation/work-item-templates/` to keep outputs consistent
 
 ---
 
