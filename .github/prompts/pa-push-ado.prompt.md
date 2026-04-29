@@ -99,6 +99,30 @@ Use the `System.LinkTypes.Hierarchy-Reverse` relation type to wire child → par
 
 After all work items are created, output a results table with ADO URLs:
 
+---
+
+## After Pushing to ADO: Cleanup (Optional)
+
+Once work items are successfully created in Azure DevOps, you can clean up the local markdown files:
+
+```bash
+# Option 1: Delete all work item files
+rm documentation/work-items/*.md
+
+# Option 2: Archive them for reference (by sprint or date)
+mv documentation/work-items/ documentation/work-items-SPRINT-N-archived/
+
+# Option 3: Keep them (no cleanup needed — just remember ADO is now the source of truth)
+```
+
+**Why cleanup?**
+
+- Prevents confusion — teams know to look in ADO, not old `.md` files
+- Reduces repo clutter
+- Clear separation: local drafts ≠ committed backlog
+
+For full details on file lifecycle and cleanup, see [WORK-ITEM-LIFECYCLE.md](../../documentation/WORK-ITEM-LIFECYCLE.md).
+
 ```
 Work items created in MyProject:
 

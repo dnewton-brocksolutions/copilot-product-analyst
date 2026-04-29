@@ -107,3 +107,16 @@ For each viable solution, describe:
 
 [What to do: create a bug, spike task, or user story — with key information pre-filled]
 ```
+
+---
+
+## After Files Are Created: Next Steps
+
+The investigation report markdown is a **temporary working document**:
+
+1. **Review findings** — Discuss root cause, solutions, and risks with the team
+2. **Create work items** — Based on findings, use `/pa-story`, `/pa-bug`, or other commands to create actionable work items
+3. **Push to ADO** — Use `/pa-push-ado` for the created work items (not the investigation report itself)
+4. **Archive or delete** (optional) — Keep the investigation report if it's valuable context, or delete it after work items are created
+
+For details on file lifecycle, see [WORK-ITEM-LIFECYCLE.md](../../documentation/WORK-ITEM-LIFECYCLE.md).

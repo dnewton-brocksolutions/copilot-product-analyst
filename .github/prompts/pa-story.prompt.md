@@ -77,3 +77,15 @@ Include:
 2. **Check templates**: Reference `documentation/product-analyst-workflow/work-item-templates/`
 
 **Output**: Three separate markdown files in `documentation/work-items/`
+
+---
+
+## After Files Are Created: Next Steps
+
+These markdown files are **temporary working documents**:
+
+1. **Review in chat** — Ask for adjustments, refinements, or splits
+2. **Push to Azure DevOps** — Use `/pa-push-ado` when ready to commit
+3. **Delete local files** (optional) — After pushing, the `.md` files are no longer needed since your work items now live in ADO
+
+For details on file lifecycle and cleanup, see [WORK-ITEM-LIFECYCLE.md](../../documentation/WORK-ITEM-LIFECYCLE.md).

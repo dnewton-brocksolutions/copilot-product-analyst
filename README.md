@@ -87,6 +87,8 @@ documentation/work-items/
 └── PR-*.md
 ```
 
+> **⚠️ Important:** These markdown files are **temporary staging documents**. After you review and refine them in Copilot Chat, push them to Azure DevOps using `/pa-push-ado`, then delete the local files. See [WORK-ITEM-LIFECYCLE.md](documentation/WORK-ITEM-LIFECYCLE.md) for the full lifecycle and cleanup guidance.
+
 ---
 
 ## Repo Structure

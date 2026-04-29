@@ -99,3 +99,15 @@ Before outputting, verify:
 - [ ] Each item has a clear user-facing description (not just work item title)
 - [ ] Technical Notes section is clearly marked as internal-only
 - [ ] Known issues section is included even if empty
+
+---
+
+## After Files Are Created: Next Steps
+
+The release notes markdown is a **temporary working document**:
+
+1. **Review in chat** — Request edits to tone, wording, or organization
+2. **Copy to your release tool** — Paste the final version into your wiki, product portal, or release notes system
+3. **Delete local file** (optional) — After publishing, the `.md` file is no longer needed
+
+Release notes are typically not pushed to ADO as work items. For details on file lifecycle, see [WORK-ITEM-LIFECYCLE.md](../../documentation/WORK-ITEM-LIFECYCLE.md).

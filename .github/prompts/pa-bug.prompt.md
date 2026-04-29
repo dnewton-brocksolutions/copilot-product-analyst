@@ -78,3 +78,15 @@ Load `documentation/product-analyst-workflow/project-config.json` to determine:
 | **2 - High**     | Major feature broken, significant user impact, no workaround |
 | **3 - Medium**   | Feature degraded, workaround exists, limited user impact     |
 | **4 - Low**      | Minor issue, cosmetic, rarely encountered                    |
+
+---
+
+## After Files Are Created: Next Steps
+
+The bug markdown file is a **temporary working document**:
+
+1. **Review in chat** — Request changes to severity, environment, or reproduction steps
+2. **Push to Azure DevOps** — Use `/pa-push-ado` when ready to create the work item
+3. **Delete local file** (optional) — After pushing, the `.md` file is no longer needed
+
+For details on file lifecycle and cleanup, see [WORK-ITEM-LIFECYCLE.md](../../documentation/WORK-ITEM-LIFECYCLE.md).

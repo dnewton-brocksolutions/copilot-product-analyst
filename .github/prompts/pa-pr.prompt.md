@@ -72,3 +72,15 @@ Examples:
 - `feat: Add date acknowledged column to alerts grid (ADO-1234)`
 - `fix: Correct null reference on empty queue response (INC0001234)`
 - `chore: Upgrade Angular from 17 to 18`
+
+---
+
+## After Files Are Created: Next Steps
+
+The PR description markdown file is a **temporary working document**:
+
+1. **Review in chat** — Request changes to the summary, testing notes, or deployment steps
+2. **Use in your PR** — Copy the description into your pull request when you're ready to submit
+3. **Delete local file** (optional) — After you've submitted the PR, the `.md` file is no longer needed
+
+For details on file lifecycle, see [WORK-ITEM-LIFECYCLE.md](../../documentation/WORK-ITEM-LIFECYCLE.md).

@@ -29,3 +29,9 @@ Read and analyze the project configuration to provide context for creating work 
    - Realistic effort estimation
    - Leveraging existing work
    - Following established patterns
+
+---
+
+## Note
+
+This command does **not** generate work item files. It's a reference utility that reads your project configuration and surfaces key information. Use it before running other PA commands (like `/pa-story`, `/pa-bug`) to ensure your work items align with your project's tech stack and standards.

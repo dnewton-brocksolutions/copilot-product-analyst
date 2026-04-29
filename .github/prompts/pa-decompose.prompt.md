@@ -69,3 +69,15 @@ Create individual task markdown files in `documentation/work-items/tasks/`:
 - `TASK-[title]-testing.md`
 - _(etc. as applicable)_
 - `ESTIMATES-[title]-tasks.md` — hour breakdown summary (SEPARATE FILE)
+
+---
+
+## After Files Are Created: Next Steps
+
+These markdown files are **temporary working documents**:
+
+1. **Review in chat** — Ask for task splits, estimate adjustments, or requirement clarifications
+2. **Push to Azure DevOps** — Use `/pa-push-ado` when ready to create the full work item hierarchy
+3. **Delete local files** (optional) — After pushing, the `.md` files are no longer needed
+
+For details on file lifecycle and cleanup, see [WORK-ITEM-LIFECYCLE.md](../../documentation/WORK-ITEM-LIFECYCLE.md).
