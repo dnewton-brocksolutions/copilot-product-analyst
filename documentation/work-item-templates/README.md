@@ -102,13 +102,11 @@ See `documentation/work-items/README.md` for detailed breakdown pattern.
 ### Backend Template Includes
 
 ✅ **Backend Checklist** - gRPC, proto, business service, database, testing, observability  
-✅ **Service Catalog Reference** - Link to existing services  
 ✅ **Database Architecture Guidance** - MES10 vs MES20 decision
 
 ### Frontend Template Includes
 
-✅ **Component Reuse Analysis** - Check catalogs before building from scratch  
-✅ **Component Catalog References** - Links to OeeWeb and ProcessingMes catalogs  
+✅ **Component Reuse Analysis** - Check existing components before building from scratch  
 ✅ **Frontend Checklist** - UX states, accessibility, gRPC-web, responsive design
 
 ### Test Plan Template Includes
@@ -130,10 +128,6 @@ Templates are designed to be **starting points**. Feel free to:
 ## Related Documentation
 
 - **Work Items README:** `documentation/work-items/README.md` - Standard task breakdown pattern
-- **Service Catalog:** `documentation/catalogs/service-catalog.md` - Backend services reference
-- **Frontend Component Catalog (OeeWeb):** `documentation/catalogs/oeeweb-component-catalog.md`
-- **Frontend Component Catalog (ProcessingMes):** `documentation/catalogs/processingmes-component-catalog.md`
-- **Component Catalog Summary:** `documentation/catalogs/COMPONENT-CATALOG-SUMMARY.md`
 
 ## Maintenance
 

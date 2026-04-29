@@ -15,8 +15,7 @@
     "applications": [
       {
         "name": "TODO: AppName (e.g. AdminPortal)",
-        "description": "TODO: What this app does and who uses it",
-        "catalogPath": "documentation/product-analyst-workflow/catalogs/component-catalog.md"
+        "description": "TODO: What this app does and who uses it"
       }
     ],
     "_note_applications": "Add one entry per distinct frontend app or module. Remove this field if you only have one.",
@@ -31,7 +30,6 @@
     "version": "TODO: e.g. .NET 8.0 | Java 21 | Python 3.12",
     "architecture": "TODO: Microservices | Monolith | Serverless | Modular Monolith",
     "protocol": "TODO: gRPC | REST | GraphQL | tRPC | mixed",
-    "catalogPath": "documentation/product-analyst-workflow/catalogs/service-catalog.md",
     "serviceCount": "TODO: approximate number of backend services or modules",
     "servicePattern": {
       "_note": "Describe the naming or structural pattern your services follow. Remove this section if not applicable.",
@@ -130,22 +128,6 @@
     ],
     "additional": [
       "TODO: Add optional tags for specific cross-cutting concerns, e.g. Security, Observability, PII"
-    ]
-  },
-
-  "catalogs": {
-    "directory": "documentation/product-analyst-workflow/catalogs/",
-    "files": [
-      {
-        "name": "service-catalog.md",
-        "description": "TODO: Describe what your service catalog covers (e.g. 12 REST microservices)",
-        "useFor": "TODO: When should the agent reference this catalog?"
-      },
-      {
-        "name": "component-catalog.md",
-        "description": "TODO: Describe what your component catalog covers (e.g. 40+ React components)",
-        "useFor": "TODO: When should the agent reference this catalog?"
-      }
     ]
   },
 

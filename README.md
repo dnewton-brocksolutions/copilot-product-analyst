@@ -24,7 +24,7 @@ The **Product Analyst** mode will appear in the Copilot Chat mode picker, and `/
 >
 > - `.github/agents/product-analyst-core.agent.md` — the chat mode (workspace-scoped)
 > - `.github/prompts/pa-*.prompt.md` — workflow slash commands
-> - `documentation/product-analyst-workflow/` — config template, work item templates, catalogs, guides
+> - `documentation/product-analyst-workflow/` — config template, work item templates, guides
 
 ---
 
@@ -114,8 +114,7 @@ copilot-product-analyst/
     ├── PA-AGENT-DIAGRAMS.md
     ├── MCP-SETUP.md
     ├── guides/
-    ├── work-item-templates/
-    └── catalogs/
+    └── work-item-templates/
 ```
 
 ---
@@ -125,7 +124,6 @@ copilot-product-analyst/
 The agent uses a **core + config** pattern. You never need to edit the agent or prompt files — all project-specific behavior comes from:
 
 - `project-config.json` — tech stack, area paths, estimation unit, standards
-- `catalogs/` — service and component catalogs (improves estimate accuracy significantly)
 
 See [CUSTOMIZATION-GUIDE.md](documentation/CUSTOMIZATION-GUIDE.md) for advanced configuration.
 

@@ -13,10 +13,10 @@ Read and analyze the project configuration to provide context for creating work 
    - **Architecture**: Microservices, databases, communication protocols
    - **Standards**: Estimation units, testing requirements, deployment patterns
 
-2. **Component Catalogs**: Check `documentation/product-analyst-workflow/catalogs/` for:
-   - Existing UI components that can be reused
-   - Service patterns and APIs already available
-   - Common implementation approaches
+2. **Codebase Discovery**: When available, explore the project source to:
+   - Identify existing services, endpoints, and components
+   - Surface patterns and conventions used in the codebase
+   - Ground estimates in actual project complexity
 
 3. **Recommendations**: Based on the project context, suggest:
    - Which application is most appropriate for this type of work

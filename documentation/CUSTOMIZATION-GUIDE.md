@@ -11,9 +11,8 @@ The Product Analyst chatmode system consists of:
 
 1. **`product-analyst-core.chatmode.md`** - Universal PA guidance (tech-stack agnostic)
 2. **`project-config.json`** - Project-specific configuration (tech stack, tools, standards)
-3. **Catalogs** - Service catalogs, component catalogs, pattern libraries
-4. **Templates** - Reusable work item templates
-5. **Quick Start Guide** - User documentation
+3. **Templates** - Reusable work item templates
+4. **Quick Start Guide** - User documentation
 
 This design allows **one chatmode to serve multiple projects** by loading project-specific context from configuration files.
 
@@ -41,13 +40,11 @@ Edit `documentation/project-config.json`:
   "frontend": {
     "framework": "React",  // or Vue, Angular, Svelte, etc.
     "applications": [...],  // Your apps/modules
-    "catalogPath": "..."    // Component catalog location
   },
   "backend": {
     "framework": "C#",      // or Java, Python, Node, Go, etc.
     "architecture": "Microservices",  // or Monolith, Serverless
     "protocol": "gRPC",     // or REST, GraphQL
-    "catalogPath": "..."    // Service catalog location
   },
   "database": {...},
   "workTracking": {...},
@@ -55,65 +52,21 @@ Edit `documentation/project-config.json`:
 }
 ```
 
-### 3. Build Catalogs (Initial: 2-4 hours, Evolve over time)
-
-#### Service Catalog
-Document your backend services/modules:
-
-```markdown
-# Service Catalog
-
-## Services
-
-### UserService
-- **Purpose:** User authentication and authorization
-- **Endpoints:** GetUser, CreateUser, UpdateUser, DeleteUser
-- **Database:** UsersDB
-- **Estimate to extend:** 4-6 hrs (add new endpoint)
-
-### OrderService
-- **Purpose:** Order management and fulfillment
-- **Endpoints:** CreateOrder, GetOrder, UpdateOrderStatus
-- **Database:** OrdersDB
-- **Estimate to extend:** 6-8 hrs (add new endpoint with business logic)
-```
-
-#### Component Catalog
-Document your frontend components:
-
-```markdown
-# Component Catalog
-
-## Reusable Components
-
-### DataGrid
-- **Purpose:** Sortable, filterable data tables
-- **Usage:** 40+ pages across the app
-- **Estimate to reuse:** 2-3 hrs (configure columns, wire data)
-- **Estimate from scratch:** 12-16 hrs
-
-### ConfirmationDialog
-- **Purpose:** Standard confirmation modal
-- **Usage:** Delete operations, dangerous actions
-- **Estimate to reuse:** 1 hr
-- **Estimate from scratch:** 4-6 hrs
-```
-
-### 4. Customize Templates (30-60 minutes)
+### 3. Customize Templates (30-60 minutes)
 
 Update `documentation/work-item-templates/` with project-specific examples:
+
 - Replace placeholder tech stack references
 - Add project-specific checklist items
-- Update catalog references
 
-### 5. Test It Out (15 minutes)
+### 4. Test It Out (15 minutes)
 
 Create a sample work item using the chatmode:
+
 1. Activate the chatmode in GitHub Copilot Chat
 2. Ask: "Create a user story for adding a new field to the user profile page"
 3. Verify it loads your project config
-4. Verify it references your catalogs
-5. Check estimates match your project's patterns
+4. Check estimates match your project's patterns
 
 ---
 
@@ -126,27 +79,31 @@ Create a sample work item using the chatmode:
 **`projectName`** - Your project name and description
 
 **`frontend`** - Frontend tech stack
+
 - `framework`: React, Vue, Angular, Svelte, etc.
-- `applications`: List of apps/modules with catalog paths
+- `applications`: List of apps/modules
 - `stateManagement`: Redux, Vuex, Pinia, NgRx, etc.
 - `dataFetching`: REST client, gRPC-web, Apollo, etc.
 
 **`backend`** - Backend tech stack
+
 - `framework`: C#, Java, Python, Node, Go, etc.
 - `architecture`: Microservices, Monolith, Serverless
 - `protocol`: gRPC, REST, GraphQL
-- `catalogPath`: Path to service catalog
 
 **`database`** - Database systems and migration approach
+
 - `systems`: List of databases with update processes
 - `migrationTool`: Liquibase, Flyway, EF Migrations, Alembic, etc.
 
 **`workTracking`** - Work tracking tool and structure
+
 - `tool`: Azure DevOps, Jira, GitHub Issues, Linear, etc.
 - `process`: Agile, Scrum, Kanban
 - `areaPath`/`iterationPath`: Organization structure
 
 **`standards`** - Team standards and policies
+
 - `estimationUnit`: hours or points
 - `testPlanUpdateEstimate`: Standard estimate for test plan updates
 - `coverage`: Code coverage targets
@@ -155,131 +112,10 @@ Create a sample work item using the chatmode:
 
 #### Optional Sections
 
-**`catalogs`** - Catalog file references  
 **`documentation`** - Documentation locations  
 **`estimationGuidelines`** - Project-specific estimation baselines  
 **`definitionOfReady`** - Project-specific DoR additions  
 **`definitionOfDone`** - Project-specific DoD additions
-
----
-
-### Building Catalogs
-
-Catalogs are the **key to accurate estimates** and **component reuse**. Invest time here to save 50-75% on development estimates.
-
-#### Service Catalog Template
-
-```markdown
-# Service Catalog
-
-> **Purpose:** Reference guide for backend services  
-> **Last Updated:** YYYY-MM-DD
-
-## Quick Reference
-
-| Service | Purpose | Common Operations | Extend Estimate |
-|---------|---------|-------------------|-----------------|
-| AuthService | Authentication | Login, Logout, Refresh | 4-6 hrs |
-| UserService | User management | CRUD users, roles | 6-8 hrs |
-| OrderService | Order processing | Create, update, fulfill | 8-10 hrs |
-
-## Services
-
-### [ServiceName]
-
-**Purpose:** [What does this service do?]
-
-**Technology:**
-- Language: [C#, Java, Python, etc.]
-- Framework: [ASP.NET, Spring Boot, FastAPI, Express, etc.]
-- Database: [Which database(s) does it use?]
-
-**Common Endpoints/Methods:**
-- `GET /api/users` - Get user list
-- `POST /api/users` - Create user
-- `PUT /api/users/{id}` - Update user
-
-**Patterns:**
-- Authentication: [How is auth handled?]
-- Validation: [What validation approach?]
-- Error handling: [Standard error responses?]
-
-**Estimation:**
-- Add simple endpoint: 4-6 hrs
-- Add complex endpoint with business logic: 8-10 hrs
-- Add new database table: +4-6 hrs
-- Add integration with external service: +6-8 hrs
-
-**Examples:**
-- [Link to similar work items]
-
-**Dependencies:**
-- [What other services does this depend on?]
-```
-
-#### Component Catalog Template
-
-```markdown
-# Component Catalog
-
-> **Purpose:** Reference guide for frontend components  
-> **Last Updated:** YYYY-MM-DD
-
-## Quick Reference
-
-| Component | Purpose | Reuse Count | Reuse Est | From Scratch |
-|-----------|---------|-------------|-----------|--------------|
-| DataGrid | Data tables | 40+ pages | 2-3 hrs | 12-16 hrs |
-| Dialog | Modal dialogs | 30+ pages | 1-2 hrs | 4-6 hrs |
-| Form | Data entry | 25+ pages | 3-4 hrs | 8-12 hrs |
-
-## Components
-
-### [ComponentName]
-
-**Purpose:** [What does this component do?]
-
-**Location:** `src/components/[path]`
-
-**Technology:**
-- Framework: [React, Vue, Angular, etc.]
-- UI Library: [Material-UI, Ant Design, Vuetify, etc.]
-- State: [Local, Redux, Context, etc.]
-
-**Props:**
-```typescript
-interface ComponentProps {
-  data: DataType;
-  onAction: (item: DataType) => void;
-  options?: OptionsType;
-}
-```
-
-**Usage Count:** [How many pages use this?]
-
-**Examples:**
-- UserListPage: Uses DataGrid to display users
-- OrderPage: Uses DataGrid for order history
-
-**Estimation:**
-- Reuse as-is: 1-2 hrs (configure props, wire data)
-- Extend with new features: 3-4 hrs
-- Build from scratch: 8-12 hrs
-
-**Common Patterns:**
-```jsx
-<DataGrid
-  data={users}
-  columns={userColumns}
-  onRowClick={handleUserClick}
-  options={{ sortable: true, exportable: true }}
-/>
-```
-
-**Related Components:**
-- GridToolbar - Export and filter toolbar
-- Pagination - Grid pagination control
-```
 
 ---
 
@@ -315,6 +151,7 @@ Build project-specific estimation baselines based on **actual hours** from compl
 ```
 
 **Update these based on:**
+
 - Sprint retrospectives (actual vs estimated)
 - Completed work item time tracking
 - Team velocity changes
@@ -327,11 +164,12 @@ Build project-specific estimation baselines based on **actual hours** from compl
 ### Azure DevOps (ADO)
 
 **Config:**
+
 ```json
 {
   "workTracking": {
     "tool": "Azure DevOps (ADO)",
-    "process": "Agile",  // or "Scrum"
+    "process": "Agile", // or "Scrum"
     "workItemTypes": ["Epic", "Feature", "User Story", "Task", "Bug"],
     "areaPath": "YourProject\\Team\\Area",
     "iterationPath": "YourProject\\Team\\Sprint"
@@ -344,6 +182,7 @@ Build project-specific estimation baselines based on **actual hours** from compl
 ### Jira
 
 **Config:**
+
 ```json
 {
   "workTracking": {
@@ -364,6 +203,7 @@ Build project-specific estimation baselines based on **actual hours** from compl
 ### GitHub Issues
 
 **Config:**
+
 ```json
 {
   "workTracking": {
@@ -388,12 +228,14 @@ Build project-specific estimation baselines based on **actual hours** from compl
 ### Keep Catalogs Updated
 
 **When to update:**
+
 - New service/component created → Add to catalog
 - Service extended → Update "Extend Estimate" based on actuals
 - Component reused → Increment "Reuse Count"
 - Estimation error discovered → Update baselines
 
 **Review Schedule:**
+
 - **Quarterly:** Review estimation accuracy, update baselines
 - **After major feature:** Add new patterns to catalogs
 - **Sprint retrospective:** Identify catalog gaps
@@ -402,13 +244,14 @@ Build project-specific estimation baselines based on **actual hours** from compl
 
 Create a simple tracking spreadsheet:
 
-| Work Item | Estimated | Actual | Variance | Notes |
-|-----------|-----------|--------|----------|-------|
-| Add user field | 8 hrs | 10 hrs | +25% | Forgot about validation |
-| Reuse DataGrid | 2 hrs | 2 hrs | 0% | Catalog accurate |
-| New service | 16 hrs | 24 hrs | +50% | External dependency issues |
+| Work Item      | Estimated | Actual | Variance | Notes                      |
+| -------------- | --------- | ------ | -------- | -------------------------- |
+| Add user field | 8 hrs     | 10 hrs | +25%     | Forgot about validation    |
+| Reuse DataGrid | 2 hrs     | 2 hrs  | 0%       | Catalog accurate           |
+| New service    | 16 hrs    | 24 hrs | +50%     | External dependency issues |
 
 **Use variance data to:**
+
 - Adjust catalog estimates
 - Identify risk multipliers
 - Improve future estimates
@@ -527,6 +370,7 @@ Create a simple tracking spreadsheet:
 ### Issue: Chatmode not loading project config
 
 **Solution:**
+
 1. Verify `documentation/project-config.json` exists
 2. Check JSON syntax (use a validator)
 3. Ensure file is in correct location relative to workspace root
@@ -535,6 +379,7 @@ Create a simple tracking spreadsheet:
 ### Issue: Estimates don't match our project
 
 **Solution:**
+
 1. Update `estimationGuidelines` in project config
 2. Build/update catalogs with actual estimates
 3. Track estimation variance for 2-3 sprints
@@ -543,6 +388,7 @@ Create a simple tracking spreadsheet:
 ### Issue: Catalogs are out of date
 
 **Solution:**
+
 1. Assign catalog maintenance to rotating team member
 2. Add "Update catalog" to DoD for new components/services
 3. Review catalogs in retrospectives
@@ -551,6 +397,7 @@ Create a simple tracking spreadsheet:
 ### Issue: Team not using the chatmode
 
 **Solution:**
+
 1. Run training session with Quick Start Guide
 2. Create example work items as templates
 3. Pair with team members to create first few work items
@@ -577,6 +424,7 @@ If you create improvements to the core chatmode or discover new patterns:
 3. **Estimation data** - Help build industry baselines
 
 **Example contributions:**
+
 - Better context questions
 - New output formats (e.g., Notion, ClickUp)
 - Tech-stack-specific checklist templates

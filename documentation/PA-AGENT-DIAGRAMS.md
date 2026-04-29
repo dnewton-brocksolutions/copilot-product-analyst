@@ -24,9 +24,6 @@ graph TB
     end
 
     subgraph Resources["📚 Reference Resources"]
-        ServiceCat["service-catalog.md<br/><i>29 C# gRPC Microservices</i>"]
-        OeeCat["oeeweb-component-catalog.md<br/><i>60+ React Components</i>"]
-        ProcCat["processingmes-component-catalog.md<br/><i>86+ React Components</i>"]
         Templates["Work Item Templates<br/><i>Story, Backend Task, Frontend Task,<br/>Spike, Test Plan, Estimates</i>"]
     end
 
@@ -60,8 +57,8 @@ graph TB
 **Key points:**
 
 - The agent always reads `project-config.json` first to understand tech stack
-- Catalogs prevent duplicate work and improve estimates (component reuse savings)
-- MCP database tools allow live schema/data investigation (replacing static catalogs)
+- MCP database tools allow live schema/data investigation
+- The agent explores the project codebase directly to identify existing services and components
 - Three output files are generated per feature (story, technical spec, estimates)
 
 ---
@@ -78,13 +75,11 @@ flowchart TD
     D --> C
     C -->|Yes| E["🔍 Check Reference Resources"]
 
-    E --> E1["Service Catalog<br/><i>Existing service to extend?</i>"]
-    E --> E2["Component Catalogs<br/><i>Reusable UI components?</i>"]
-    E --> E3["MCP Database Tools<br/><i>Existing tables, validation,<br/>stored procedures?</i>"]
+    E --> E1["Codebase Exploration<br/><i>Existing services & components?</i>"]
+    E --> E2["MCP Database Tools<br/><i>Existing tables, validation,<br/>stored procedures?</i>"]
 
     E1 --> F["📝 Define Scope"]
     E2 --> F
-    E3 --> F
 
     F --> F1["In-Scope Items"]
     F --> F2["Out-of-Scope Items"]
@@ -288,12 +283,6 @@ graph TB
             TST["technical-spec-template.md"]
         end
 
-        subgraph Catalogs["📁 catalogs/"]
-            SC["service-catalog.md<br/><i>29 microservices</i>"]
-            OC["oeeweb-component-catalog.md<br/><i>60+ components</i>"]
-            PC["processingmes-component-catalog.md<br/><i>86+ components</i>"]
-        end
-
         subgraph Items["📁 archive/items/"]
             Tasks["tasks/"]
             Stories["user-stories/"]
@@ -305,22 +294,19 @@ graph TB
 
     Config -.->|"Agent reads first"| QS
     QS -.->|"References"| Templates
-    QS -.->|"References"| Catalogs
     Templates -.->|"Produces"| Items
 
     style Folder fill:#f9f9f9,color:#333
     style Guides fill:#4A90D9,color:#fff
     style Templates fill:#7B68EE,color:#fff
-    style Catalogs fill:#50C878,color:#fff
     style Items fill:#E67E22,color:#fff
 ```
 
 **Data flow:**
 
 1. Agent reads `project-config.json` first (tech stack context)
-2. Quick Start guide references templates and catalogs
+2. Quick Start guide references templates
 3. Templates are used to produce work items in `archive/items/`
-4. Catalogs inform reuse decisions and estimate accuracy
 
 ---
 

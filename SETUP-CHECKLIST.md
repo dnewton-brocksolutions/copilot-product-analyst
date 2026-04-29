@@ -16,7 +16,7 @@ Copy two folders from this repo into your project:
 # Workflow slash commands (gives you /pa-story, /pa-bug, etc.)
 cp -r .github/prompts/  <your-project>/.github/prompts/
 
-# Project config, work item templates, guides, and catalogs
+# Project config, work item templates, and guides
 cp -r documentation/  <your-project>/documentation/product-analyst-workflow/
 ```
 
@@ -92,34 +92,7 @@ Edit `documentation/product-analyst-workflow/project-config.json` and replace ev
 
 ---
 
-## Phase 3: Build Catalogs (Recommended — ~1-2 hrs)
-
-Catalogs dramatically improve work item quality and estimate accuracy.
-
-### 3.1 Service Catalog (`catalogs/service-catalog.md`)
-
-Start from `catalogs/service-catalog.template.md`. For each backend service/module:
-
-- [ ] Document its purpose (one sentence)
-- [ ] List its key endpoints or methods (3-5 most common)
-- [ ] Provide extension estimates (add endpoint, add feature)
-- [ ] Note any patterns, dependencies, or gotchas
-
-**Priority:** Document your 5 most commonly extended services first.
-
-### 3.2 Component Catalog (`catalogs/component-catalog.md`)
-
-Start from `catalogs/component-catalog.template.md`. For each significant frontend component:
-
-- [ ] Document its purpose
-- [ ] List which pages or features already use it
-- [ ] Provide reuse estimate vs. build-from-scratch estimate
-
-**Priority:** Document your most-reused widgets and page templates first.
-
----
-
-## Phase 4: Team Onboarding (~15 min)
+## Phase 3: Team Onboarding (~15 min)
 
 - [ ] Share the [QUICK-START-PRODUCT-ANALYST.md](guides/QUICK-START-PRODUCT-ANALYST.md) guide with your team
 - [ ] Review the [TASK-DECOMPOSITION-GUIDE.md](guides/TASK-DECOMPOSITION-GUIDE.md) so everyone understands the Backend → Frontend task order
@@ -128,7 +101,7 @@ Start from `catalogs/component-catalog.template.md`. For each significant fronte
 
 ---
 
-## Phase 5: Optional Enhancements
+## Phase 4: Optional Enhancements
 
 These are optional but can improve the agent's quality over time.
 
@@ -146,7 +119,6 @@ These are optional but can improve the agent's quality over time.
 
   **Reference:** [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)
 
-- [ ] Review and update catalogs after major features are delivered
 - [ ] Keep an `ESTIMATES-actual.md` to track estimate vs. actual and improve future estimates
 
 ---
@@ -156,8 +128,6 @@ These are optional but can improve the agent's quality over time.
 | What                | Where                                                                          |
 | ------------------- | ------------------------------------------------------------------------------ |
 | Project config      | `documentation/product-analyst-workflow/project-config.json`                   |
-| Service catalog     | `documentation/product-analyst-workflow/catalogs/service-catalog.md`           |
-| Component catalog   | `documentation/product-analyst-workflow/catalogs/component-catalog.md`         |
 | Work item templates | `documentation/product-analyst-workflow/work-item-templates/`                  |
 | Work item output    | `documentation/work-items/`                                                    |
 | Quick start guide   | `documentation/product-analyst-workflow/guides/QUICK-START-PRODUCT-ANALYST.md` |

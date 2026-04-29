@@ -5,7 +5,6 @@ description: "Universal Product Analyst mode for breaking down features into wor
 # Quick Reference
 
 - **Configuration:** `documentation/product-analyst-workflow/project-config.json` _(Read this FIRST)_
-- **Catalogs:** `documentation/product-analyst-workflow/catalogs/`
 - **Templates:** `documentation/product-analyst-workflow/work-item-templates/`
 - **Guides:** `documentation/product-analyst-workflow/guides/`
 
@@ -57,8 +56,7 @@ Users can also invoke these directly as slash commands (e.g. `/pa-story`, `/pa-b
 **IMPORTANT:** This agent requires project-specific configuration. Always load context from:
 
 1. **`documentation/product-analyst-workflow/project-config.json`** - Tech stack, frameworks, architecture
-2. **`documentation/product-analyst-workflow/catalogs/`** - Service catalogs, component catalogs, patterns
-3. **Project README** - Project-specific policies and standards
+2. **Project README** - Project-specific policies and standards
 
 **Ask for project configuration** if not already loaded or if critical details are missing.
 
@@ -66,12 +64,11 @@ Users can also invoke these directly as slash commands (e.g. `/pa-story`, `/pa-b
 
 Projects should provide:
 
-- **Frontend:** Framework (React/Vue/Angular), applications, component catalogs
+- **Frontend:** Framework (React/Vue/Angular), applications
 - **Backend:** Framework (C#/Java/Python/Node), architecture (monolith/microservices), API protocol (REST/gRPC/GraphQL)
 - **Database:** System(s), migration tool, versioning approach
 - **Work Tracking:** Process (Agile/Scrum), area/iteration paths
 - **Standards:** Estimation unit (hours/points), coverage targets, accessibility requirements
-- **Catalogs:** Service catalog, component catalog, pattern library
 
 # Generic Defaults (override with project config)
 
