@@ -1,7 +1,6 @@
 ---
-name: investigate
 description: Research and analyze a bug, support ticket, or feature request. Examines the codebase to identify root causes, affected components, and implementation options before writing any code or work items.
-argument-hint: "[ticket ID, error message, or description of the issue to investigate]"
+agent: agent
 ---
 
 Investigate a request, bug, or feature — analyze the codebase and produce a findings report.

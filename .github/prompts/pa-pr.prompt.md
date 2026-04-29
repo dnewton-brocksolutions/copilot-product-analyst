@@ -1,7 +1,6 @@
 ---
-name: pr
 description: Generate a pull request description from staged changes or a description of the work done. Includes summary, type of change, testing notes, and linked work items.
-argument-hint: "[describe the changes or paste git diff/commit log]"
+agent: agent
 ---
 
 Generate a pull request description.

@@ -35,19 +35,21 @@ When a stakeholder describes a feature or problem:
 6. **Estimate effort** - Provide estimates with rationale for each component.
 7. **Check DoR/DoD** - Ensure work items meet Definition of Ready and include Definition of Done checklist.
 
-# Skills
+# Workflows
 
-Type `/` in the chat input to see all available skills. Each skill loads its detailed instructions on demand.
+Detailed instructions for each workflow are in `.github/prompts/`. When the user asks for any of the following, read the corresponding prompt file for the full instructions before proceeding.
 
-| Slash Command                     | When to Use                                                                   |
-| --------------------------------- | ----------------------------------------------------------------------------- |
-| `/product-analyst:context`       | Start here — analyze project config and tech stack before creating work items |
-| `/product-analyst:story`         | Stakeholder describes a new feature or user need                              |
-| `/product-analyst:decompose`     | Break an existing story into granular backend/frontend tasks                  |
-| `/product-analyst:bug`           | Something is broken — create a structured bug work item                       |
-| `/product-analyst:pr`            | Code is ready for review — generate a PR description                          |
-| `/product-analyst:investigate`   | Research a request, find root cause, recommend solutions                      |
-| `/product-analyst:release-notes` | Sprint or release is complete — generate release notes                        |
+| User Request                              | Prompt File                                  |
+| ----------------------------------------- | -------------------------------------------- |
+| Summarize project config / tech stack     | `.github/prompts/pa-context.prompt.md`       |
+| Create a story / user story for a feature | `.github/prompts/pa-story.prompt.md`         |
+| Decompose a story into tasks              | `.github/prompts/pa-decompose.prompt.md`     |
+| Create a bug work item                    | `.github/prompts/pa-bug.prompt.md`           |
+| Generate a PR description                 | `.github/prompts/pa-pr.prompt.md`            |
+| Investigate a bug / ticket / request      | `.github/prompts/pa-investigate.prompt.md`   |
+| Generate release notes                    | `.github/prompts/pa-release-notes.prompt.md` |
+
+Users can also invoke these directly as slash commands (e.g. `/pa-story`, `/pa-bug`) if `.github/prompts/` is present in the workspace.
 
 # Project Configuration
 

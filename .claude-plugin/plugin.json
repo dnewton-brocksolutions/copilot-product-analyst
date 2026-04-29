@@ -1,8 +1,0 @@
-{
-  "name": "product-analyst",
-  "description": "Universal Product Analyst agent for breaking down features into epics, user stories, tasks, and bugs. Requires project-specific configuration for tech stack context.",
-  "version": "1.0.0",
-  "author": {
-    "name": "dnewton"
-  }
-}

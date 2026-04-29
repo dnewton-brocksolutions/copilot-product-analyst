@@ -1,7 +1,6 @@
 ---
-name: story
 description: Create a user story using the Three-File Pattern — a business-focused main story, a technical specification, and a separate estimates file. Always reads project-config.json first to use the correct application names and tech stack.
-argument-hint: "[describe the feature or user need]"
+agent: agent
 ---
 
 Create a user story following the **Three-File Pattern**.

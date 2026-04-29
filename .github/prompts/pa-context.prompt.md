@@ -1,7 +1,6 @@
 ---
-name: context
 description: Analyze and summarize the project configuration and tech stack. Use this before creating any work item to understand the project's applications, frameworks, architecture, and standards.
-argument-hint: "[optional: specific area to focus on, e.g. 'frontend stack' or 'database setup']"
+agent: agent
 ---
 
 Read and analyze the project configuration to provide context for creating work items.

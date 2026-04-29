@@ -1,7 +1,6 @@
 ---
-name: decompose
 description: Decompose a user story into granular implementation tasks using the Objective+Requirements breakdown pattern. Reads an existing story file and produces individual task work items. Always creates a separate estimates file.
-argument-hint: "[path to story file or brief description of the story]"
+agent: agent
 ---
 
 Break a user story into implementation tasks.

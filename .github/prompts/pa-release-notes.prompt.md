@@ -1,7 +1,6 @@
 ---
-name: release-notes
 description: Generate structured release notes from a list of work items, commit log, or story descriptions. Groups changes by category (features, fixes, improvements) and formats for the target audience.
-argument-hint: "[sprint name, version, or paste list of work items/commits]"
+agent: agent
 ---
 
 Generate release notes from completed work items or a commit log.

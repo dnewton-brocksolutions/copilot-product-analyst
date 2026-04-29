@@ -1,22 +1,24 @@
-# Setup Checklist — Product Analyst Agent Plugin
+# Setup Checklist — Product Analyst Agent
 
-Use this checklist after installing the plugin to configure the agent for your project. Work through it top to bottom — it takes about 30–60 minutes for a new project.
+Use this checklist after installing the agent to configure it for your project. Work through it top to bottom — it takes about 30–60 minutes for a new project.
 
 ## Prerequisites
 
-- [ ] VS Code 1.99+ with GitHub Copilot
-- [ ] `chat.plugins.enabled: true` in VS Code settings
-- [ ] Plugin installed via "Chat: Install Plugin From Source" or `chat.pluginLocations`
+- [ ] VS Code with GitHub Copilot Chat extension installed
+- [ ] `.github/agents/product-analyst-core.agent.md` copied to your VS Code user prompts folder (see [README.md](README.md) install steps)
+- [ ] VS Code window reloaded — **Product Analyst** mode appears in the Copilot Chat mode picker
 
 ## Phase 0: Copy Templates into Your Project (~2 min)
 
-Copy the `documentation/` folder from this repo into your project:
+Copy two folders from this repo into your project:
 
-```
-documentation/  →  <your-project>/documentation/product-analyst-workflow/
-```
+```bash
+# Workflow slash commands (gives you /pa-story, /pa-bug, etc.)
+cp -r .github/prompts/  <your-project>/.github/prompts/
 
-This gives you the config template, work item templates, catalog templates, and guides.
+# Project config, work item templates, guides, and catalogs
+cp -r documentation/  <your-project>/documentation/product-analyst-workflow/
+```
 
 ---
 
@@ -83,9 +85,9 @@ Edit `documentation/product-analyst-workflow/project-config.json` and replace ev
 - [ ] Open VS Code
 - [ ] Open GitHub Copilot Chat (`Ctrl+Shift+I` or sidebar)
 - [ ] Select the **Product Analyst** custom mode from the mode picker
-- [ ] Type: `/context`
+- [ ] Type: `/pa-context`
 - [ ] Confirm the agent reads your config and reflects the correct stack
-- [ ] Type: `/story Add a login page for users`
+- [ ] Type: `/pa-story Add a login page for users`
 - [ ] Confirm the work item references your actual applications and tech stack
 
 ---
@@ -151,15 +153,16 @@ These are optional but can improve the agent's quality over time.
 
 ## Quick Reference
 
-| What                | Where                                                                            |
-| ------------------- | -------------------------------------------------------------------------------- |
-| Project config      | `documentation/product-analyst-workflow/project-config.json`                    |
-| Service catalog     | `documentation/product-analyst-workflow/catalogs/service-catalog.md`            |
-| Component catalog   | `documentation/product-analyst-workflow/catalogs/component-catalog.md`          |
-| Work item templates | `documentation/product-analyst-workflow/work-item-templates/`                   |
-| Work item output    | `documentation/work-items/`                                                      |
+| What                | Where                                                                          |
+| ------------------- | ------------------------------------------------------------------------------ |
+| Project config      | `documentation/product-analyst-workflow/project-config.json`                   |
+| Service catalog     | `documentation/product-analyst-workflow/catalogs/service-catalog.md`           |
+| Component catalog   | `documentation/product-analyst-workflow/catalogs/component-catalog.md`         |
+| Work item templates | `documentation/product-analyst-workflow/work-item-templates/`                  |
+| Work item output    | `documentation/work-items/`                                                    |
 | Quick start guide   | `documentation/product-analyst-workflow/guides/QUICK-START-PRODUCT-ANALYST.md` |
-| Agent definition    | `.github/agents/product-analyst-core.agent.md`                                  |
+| Agent definition    | `.github/agents/product-analyst-core.agent.md`                                 |
+| Slash commands      | `.github/prompts/`                                                             |
 
 ---
 
@@ -175,4 +178,4 @@ These are optional but can improve the agent's quality over time.
 → Start a fresh Copilot Chat session, then explicitly say: _"Read project-config.json before we begin."_
 
 **Agent not found in Copilot Chat?**
-→ Ensure `.github/agents/product-analyst-core.agent.md` exists and VS Code extension is up to date. Reload window.
+→ Ensure `product-analyst-core.agent.md` has been copied to your VS Code user prompts folder and you've reloaded the window. See [README.md](README.md) for the exact path for your OS.

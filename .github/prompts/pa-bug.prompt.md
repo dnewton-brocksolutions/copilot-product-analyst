@@ -1,7 +1,6 @@
 ---
-name: bug
 description: Create a structured bug work item with reproduction steps, expected vs actual behavior, environment details, and severity. Reads project-config.json to use the correct area path and tags.
-argument-hint: "[describe the bug or paste error details]"
+agent: agent
 ---
 
 Create a bug work item following the project's bug format.

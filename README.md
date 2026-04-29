@@ -1,245 +1,154 @@
-# Product Analyst Agent Plugin
+# Product Analyst Agent
 
-A VS Code **agent plugin** that provides an AI-powered Product Analyst mode for GitHub Copilot. The agent helps your team create concise, well-structured work items (User Stories, Tasks, Bugs, PRs, Release Notes) grounded in your project's specific tech stack and architecture.
-
----
-
-## What You Get
-
-- **AI-powered PA mode** — activate via the Product Analyst custom chat mode in GitHub Copilot Chat
-- **Project-aware work items** — agent reads your `project-config.json` before creating any work item
-- **Built-in skills** — `/product-analyst:story`, `/product-analyst:bug`, `/product-analyst:decompose`, and more, each loading on-demand
-- **Consistent output** — three-file story pattern, Objective + Requirements tasks, strict ADO bug format
-- **Scalable catalog system** — service and component catalogs for accurate estimation
+A **custom Copilot Chat agent** that helps your team create well-structured work items — User Stories, Tasks, Bugs, PRs, and Release Notes — grounded in your project's specific tech stack and architecture.
 
 ---
 
-## Install the Plugin (2 minutes)
+## Install
 
-> **Prerequisite:** Claude Code (bundled in VS Code Copilot Chat 0.45+) or the standalone Claude Code CLI.
+Copy three things from this repo into your project:
 
-### Option A — Install from GitHub (recommended)
+```bash
+# 1. Agent definition (workspace-scoped chat mode)
+cp -r .github/  <your-project>/.github/
 
-In Claude Code (or the Copilot Chat panel), run:
-
-```
-/plugin marketplace add dnewton-brocksolutions/copilot-product-analyst
-```
-
-Then install the plugin:
-
-```
-/plugin install product-analyst@dnewton-brocksolutions-copilot-product-analyst
+# 2. Project config, templates, and guides
+cp -r documentation/  <your-project>/documentation/product-analyst-workflow/
 ```
 
-### Option B — Install from a local clone
+Then reload VS Code (`Ctrl+Shift+P` → **Reload Window**).
 
-Clone this repo, then add it as a local marketplace:
+The **Product Analyst** mode will appear in the Copilot Chat mode picker, and `/pa-story`, `/pa-bug`, etc. will be available as slash commands.
 
-```
-/plugin marketplace add /path/to/copilot-product-analyst
-```
-
-Then install:
-
-```
-/plugin install product-analyst@copilot-product-analyst
-```
-
-### Option C — Load for a single session (no install)
-
-```
-claude --plugin-dir /path/to/copilot-product-analyst
-```
+> **What gets installed:**
+>
+> - `.github/agents/product-analyst-core.agent.md` — the chat mode (workspace-scoped)
+> - `.github/prompts/pa-*.prompt.md` — workflow slash commands
+> - `documentation/product-analyst-workflow/` — config template, work item templates, catalogs, guides
 
 ---
 
-## Set Up Your Project (15–60 minutes)
+## Configure Your Project
 
-The plugin provides the agent globally. Each project needs its own configuration so the agent understands your tech stack.
+Edit `documentation/product-analyst-workflow/project-config.json` and replace the `TODO` placeholders with your project's details:
 
-### Step 1 — Copy the documentation templates
-
-Copy the `documentation/` folder from this repo into your project:
-
-```
-<your-project>/documentation/product-analyst-workflow/
-```
-
-This gives you the project config template, work item templates, catalog templates, and guides.
-
-### Step 2 — Configure your project
-
-Edit `documentation/product-analyst-workflow/project-config.json`. Replace all `TODO` placeholders:
-
-- Project name and description
-- Frontend framework and applications
-- Backend framework, architecture, protocol
+- Frontend framework, applications, state management, testing
+- Backend framework, architecture, API protocol, ORM
 - Database systems and migration tools
-- Work tracking tool and organization paths
-- Team standards (estimation, coverage, accessibility)
+- Work tracking tool (ADO, Jira, GitHub Issues), area/iteration paths
+- Team standards: estimation unit, coverage target, accessibility
 
-See [SETUP-CHECKLIST.md](SETUP-CHECKLIST.md) for a step-by-step walkthrough.
-
-### Step 3 — Build your catalogs (recommended)
-
-Populate the catalog templates in `documentation/product-analyst-workflow/catalogs/` with your actual services and components. Better catalogs = more accurate estimates.
-
-### Step 4 — Test it
-
-Open GitHub Copilot Chat, select the **Product Analyst** custom mode, and type:
-
-```
-/product-analyst:context
-```
-
-The agent should read your `project-config.json` and summarize your tech stack. Then try:
-
-```
-/product-analyst:story Add a login page for operators
-```
-
-> **Optional — Live database investigation:** The agent can query your databases directly during task decomposition (inspecting table schemas and stored procedures before writing backend requirements). This requires a compatible MCP server registered in VS Code. See the [VS Code MCP documentation](https://code.visualstudio.com/docs/copilot/chat/mcp-servers) for setup. The agent works fully without MCP — database investigation just becomes a manual step.
+See [SETUP-CHECKLIST.md](SETUP-CHECKLIST.md) for a step-by-step walkthrough (~30–60 min for a new project).
 
 ---
 
-## Available Skills
+## Verify It Works
 
-Each skill loads its detailed instructions on demand when you invoke it. Skills are automatically prefixed with the plugin name when installed via the plugin.
+Open Copilot Chat, select **Product Analyst** mode, and run:
 
-| Slash Command                    | Description                                                                           |
-| -------------------------------- | ------------------------------------------------------------------------------------- |
-| `/product-analyst:context`       | Analyze and summarize project configuration and tech stack                            |
-| `/product-analyst:story`         | Create a user story using the Three-File Pattern (story + technical spec + estimates) |
-| `/product-analyst:decompose`     | Break a story into backend and frontend tasks with Objective + Requirements structure |
-| `/product-analyst:bug`           | Create a structured bug with Description, Repro Steps, Severity, and Impact           |
-| `/product-analyst:pr`            | Generate a structured PR description from completed code changes                      |
-| `/product-analyst:investigate`   | Research a request and produce a findings report before creating work items           |
-| `/product-analyst:release-notes` | Generate release notes from a sprint or list of completed work items                  |
+```
+/pa-context
+```
+
+The agent reads your `project-config.json` and summarizes your tech stack. Then try:
+
+```
+/pa-story Add a login page for operators
+```
 
 ---
 
-## Plugin Structure
+## Available Workflows
+
+| Slash Command       | What it does                                                               |
+| ------------------- | -------------------------------------------------------------------------- |
+| `/pa-context`       | Summarize project configuration and tech stack                             |
+| `/pa-story`         | Create a user story (story + technical spec + estimates)                   |
+| `/pa-decompose`     | Break a story into backend and frontend tasks                              |
+| `/pa-bug`           | Create a structured bug with repro steps and severity                      |
+| `/pa-pr`            | Generate a PR description from completed changes                           |
+| `/pa-investigate`   | Research a request and produce a findings report before writing work items |
+| `/pa-release-notes` | Generate release notes from a sprint or list of completed work items       |
+
+---
+
+## What Gets Created
+
+Work items the agent creates go in `documentation/work-items/`:
+
+```
+documentation/work-items/
+├── USER-STORY-*.md
+├── TECHNICAL-*.md
+├── ESTIMATES-*.md
+├── TASK-1-backend-*.md
+├── TASK-2-frontend-*.md
+├── BUG-*.md
+└── PR-*.md
+```
+
+---
+
+## Repo Structure
 
 ```
 copilot-product-analyst/
-├── .claude-plugin/
-│   ├── plugin.json                        ← Plugin manifest (name, version, author)
-│   └── marketplace.json                   ← Marketplace catalog (required for /plugin marketplace add)
-├── README.md                           ← You are here
-├── SETUP-CHECKLIST.md                  ← Step-by-step project config guide
+├── README.md
+├── SETUP-CHECKLIST.md
 │
-├── agents/
-│   └── product-analyst-core.agent.md     ← Agent persona, role, defaults, DoR/DoD
+├── .github/
+│   ├── agents/
+│   │   └── product-analyst-core.agent.md  ← chat mode definition
+│   └── prompts/
+│       ├── pa-context.prompt.md
+│       ├── pa-story.prompt.md
+│       ├── pa-decompose.prompt.md
+│       ├── pa-bug.prompt.md
+│       ├── pa-pr.prompt.md
+│       ├── pa-investigate.prompt.md
+│       └── pa-release-notes.prompt.md
 │
-├── skills/                             ← On-demand skill instructions
-│   ├── context/SKILL.md                   ← /product-analyst:context
-│   ├── story/SKILL.md                     ← /product-analyst:story
-│   ├── decompose/SKILL.md                 ← /product-analyst:decompose
-│   ├── bug/SKILL.md                       ← /product-analyst:bug
-│   ├── pr/SKILL.md                        ← /product-analyst:pr
-│   ├── investigate/SKILL.md               ← /product-analyst:investigate
-│   └── release-notes/SKILL.md             ← /product-analyst:release-notes
-│
-└── documentation/                      ← Copy this into each project that uses the agent
-    ├── project-config.json                ← Template config (fill in your details)
-    ├── CUSTOMIZATION-GUIDE.md             ← Detailed guide for adapting to any project
-    ├── PA-AGENT-DIAGRAMS.md           ← Architecture diagrams of how the agent works
-    ├── MCP-DATABASE-SETUP.md          ← Optional: connect agent to live databases
-    │
+└── documentation/
+    ├── project-config.json                ← fill in your project details
+    ├── CUSTOMIZATION-GUIDE.md
+    ├── PA-AGENT-DIAGRAMS.md
+    ├── MCP-DATABASE-SETUP.md
     ├── guides/
-    │   ├── QUICK-START-PRODUCT-ANALYST.md
-    │   ├── ESTIMATES-TEMPLATE.md
-    │   ├── ESTIMATES-SEPARATION-GUIDE.md
-    │   └── TASK-DECOMPOSITION-GUIDE.md
-    │
     ├── work-item-templates/
-    │   ├── README.md
-    │   ├── backend-task-simple.md
-    │   ├── frontend-task-simple.md
-    │   ├── business-focused-task-template.md
-    │   ├── business-focused-user-story-template.md
-    │   ├── spike-task-template.md
-    │   └── test-plan-task-template.md
-    │
     └── catalogs/
-        ├── README.md
-        ├── service-catalog.template.md    ← Fill in your backend services
-        └── component-catalog.template.md  ← Fill in your frontend components
-```
-
----
-
-## Project Setup: Folder Structure
-
-After copying `documentation/` into your project:
-
-```
-<your-project>/
-└── documentation/
-    └── product-analyst-workflow/
-        ├── project-config.json               ← Your project config (required)
-        ├── CUSTOMIZATION-GUIDE.md
-        ├── guides/                           ← Process guides
-        ├── work-item-templates/              ← Work item templates
-        └── catalogs/                         ← Service & component catalogs
-```
-
-Work items the agent creates go in:
-
-```
-<your-project>/
-└── documentation/
-    └── work-items/
-        ├── USER-STORY-*.md
-        ├── TECHNICAL-*.md
-        ├── ESTIMATES-*.md
-        ├── TASK-1-backend-*.md
-        ├── TASK-2-frontend-*.md
-        ├── BUG-*.md
-        └── PR-*.md
 ```
 
 ---
 
 ## Customization
 
-See [SETUP-CHECKLIST.md](SETUP-CHECKLIST.md) for the full configuration walkthrough.
+The agent uses a **core + config** pattern. You never need to edit the agent or prompt files — all project-specific behavior comes from:
 
-The agent follows a **core + config** pattern:
+- `project-config.json` — tech stack, area paths, estimation unit, standards
+- `catalogs/` — service and component catalogs (improves estimate accuracy significantly)
 
-- `agents/product-analyst-core.agent.md` — persona, role, DoR/DoD — never needs editing
-- `skills/<name>/SKILL.md` — per-command instructions, loaded only when that skill is invoked
-- `project-config.json` — all project-specific details live here
-- `catalogs/` — optional but improves estimate accuracy significantly
+See [CUSTOMIZATION-GUIDE.md](documentation/CUSTOMIZATION-GUIDE.md) for advanced configuration.
 
 ---
 
 ## Troubleshooting
 
-**"no plugins found … does not appear to be a valid plugin marketplace"?**
+**Product Analyst mode doesn't appear?**
+→ Confirm `.github/agents/product-analyst-core.agent.md` exists in the workspace root and reload VS Code.
 
-- The marketplace is defined at `.claude-plugin/marketplace.json`, not at the repo root. Make sure you cloned the latest version of this repo.
-- Use `/plugin marketplace add <path>` pointing to the repo directory (not to a specific file).
+**Slash commands not appearing?**
+→ Confirm `.github/prompts/` exists in the workspace and reload VS Code.
 
-**Agent skills don't appear after installing?**
+**Work items are generic (not using my stack)?**
+→ Run `/pa-context` first. If it doesn't reflect your stack, check `project-config.json` for `TODO` placeholders or JSON syntax errors.
 
-- Run `/reload-plugins` inside Claude Code to pick up newly installed plugins.
-- Verify the plugin is listed in `/plugin` → Installed tab.
+**Want the agent available in every workspace (not just this one)?**
+→ Copy `.github/agents/product-analyst-core.agent.md` to your VS Code user prompts folder:
 
-**Agent produces generic work items without using my tech stack?**
+```bash
+# Linux / VS Code Server
+cp .github/agents/product-analyst-core.agent.md ~/.vscode-server/data/User/prompts/
 
-- Verify `project-config.json` exists at `documentation/product-analyst-workflow/project-config.json` in your workspace
-- Check for JSON syntax errors in the config file
-- Start with `/product-analyst:context` — the agent will read and confirm your project config before proceeding
-
-**Work item templates not referenced?**
-
-- The agent reads templates from `documentation/product-analyst-workflow/work-item-templates/`
-- Ensure that path exists relative to your workspace root
-
----
-
-## Questions & Feedback
-
-This agent was built for teams using GitHub Copilot Chat. For customizations beyond what `project-config.json` supports, see `documentation/product-analyst-workflow/CUSTOMIZATION-GUIDE.md` and the inline comments in each `skills/<name>/SKILL.md` file.
+# macOS local
+cp .github/agents/product-analyst-core.agent.md ~/Library/Application\ Support/Code/User/prompts/
+```
