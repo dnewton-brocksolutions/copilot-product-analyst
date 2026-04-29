@@ -78,7 +78,16 @@
       "TODO: e.g. Backend Tasks first, then Frontend Tasks",
       "TODO: Adjust to match your team's preferred sequencing"
     ],
-    "taskBreakdownNote": "TODO: Any notes on how your team breaks down work. Remove or replace this placeholder."
+    "taskBreakdownNote": "TODO: Any notes on how your team breaks down work. Remove or replace this placeholder.",
+    "ado": {
+      "_note": "Fill in if your team uses Azure DevOps. Required for the pa-push-ado workflow. Remove this section if using a different tool.",
+      "orgUrl": "TODO: https://dev.azure.com/your-org",
+      "project": "TODO: Your ADO project name",
+      "processTemplate": "TODO: Agile | Scrum | CMMI",
+      "defaultTeam": "TODO: Your team name within the ADO project (e.g. MyProject Team)",
+      "mcpEnabled": false,
+      "_mcpNote": "Set mcpEnabled to true once .vscode/mcp.json is configured. When enabled, the pa-push-ado prompt will use the azure-devops MCP server to create work items directly."
+    }
   },
 
   "standards": {

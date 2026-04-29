@@ -230,3 +230,73 @@ Prompt the agent explicitly if needed:
 - [ ] No credentials hardcoded in `mcp.json`
 - [ ] Server enforces read-only at the application level (not just DB permissions)
 - [ ] Connection strings scoped to only the databases the agent needs
+
+---
+
+## Azure DevOps MCP Setup (for pa-push-ado)
+
+The `pa-push-ado` workflow uses a separate MCP server to create work items directly in ADO. Add this as an additional entry in your project's `.vscode/mcp.json` alongside any database servers.
+
+### Step 1: Add the server entry to `.vscode/mcp.json`
+
+```json
+{
+  "servers": {
+    "azure-devops": {
+      "command": "npx",
+      "args": ["-y", "@azure/azure-devops-mcp"],
+      "env": {
+        "AZURE_DEVOPS_ORG_URL": "https://dev.azure.com/your-org",
+        "AZURE_DEVOPS_DEFAULT_PROJECT": "your-project-name",
+        "AZURE_DEVOPS_AUTH_TYPE": "pat",
+        "AZURE_DEVOPS_PAT": "${input:adoPat}"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "id": "adoPat",
+      "type": "promptString",
+      "description": "Azure DevOps Personal Access Token (Work Items: Read & Write scope required)",
+      "password": true
+    }
+  ]
+}
+```
+
+`${input:adoPat}` causes VS Code to prompt for the token at runtime — it is never stored in the file. If you already have other servers in `mcp.json`, add the `azure-devops` entry to the existing `servers` object and the `adoPat` entry to the existing `inputs` array.
+
+**Authentication alternatives:**
+
+| Option               | When to use                      | Change needed                                                                               |
+| -------------------- | -------------------------------- | ------------------------------------------------------------------------------------------- |
+| PAT (shown above)    | Personal dev setup, CI pipelines | No change                                                                                   |
+| Azure CLI / Entra ID | Team environments with SSO       | Set `AZURE_DEVOPS_AUTH_TYPE` to `"entra"` and remove `AZURE_DEVOPS_PAT` and the input entry |
+
+### Step 2: Update project-config.json
+
+```json
+"workTracking": {
+  "ado": {
+    "orgUrl": "https://dev.azure.com/your-org",
+    "project": "your-project-name",
+    "processTemplate": "Agile",
+    "defaultTeam": "Your Team Name",
+    "mcpEnabled": true
+  }
+}
+```
+
+### Step 3: Verify
+
+Reload VS Code, then open Copilot Chat and ask:
+
+> "Push the work items we just created to ADO"
+
+The agent will confirm the hierarchy before creating anything.
+
+### Security Checklist (ADO)
+
+- [ ] PAT scoped to **Work Items: Read & Write** only — no broader permissions
+- [ ] PAT not committed to source control (use `${input:...}` or Entra ID)
+- [ ] If using a service principal for CI, grant it the minimum ADO role needed (Contributor on the project)

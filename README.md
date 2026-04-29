@@ -112,7 +112,7 @@ copilot-product-analyst/
     ├── project-config.json                ← fill in your project details
     ├── CUSTOMIZATION-GUIDE.md
     ├── PA-AGENT-DIAGRAMS.md
-    ├── MCP-DATABASE-SETUP.md
+    ├── MCP-SETUP.md
     ├── guides/
     ├── work-item-templates/
     └── catalogs/

@@ -48,6 +48,7 @@ Detailed instructions for each workflow are in `.github/prompts/`. When the user
 | Generate a PR description                 | `.github/prompts/pa-pr.prompt.md`            |
 | Investigate a bug / ticket / request      | `.github/prompts/pa-investigate.prompt.md`   |
 | Generate release notes                    | `.github/prompts/pa-release-notes.prompt.md` |
+| Push work items to Azure DevOps           | `.github/prompts/pa-push-ado.prompt.md`      |
 
 Users can also invoke these directly as slash commands (e.g. `/pa-story`, `/pa-bug`) if `.github/prompts/` is present in the workspace.
 
