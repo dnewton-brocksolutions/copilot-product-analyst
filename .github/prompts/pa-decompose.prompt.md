@@ -37,12 +37,6 @@ Break a user story into implementation tasks.
 
 - [ ] [Testable outcome matching a requirement]
 - [ ] [Testable outcome matching a requirement]
-
-## Definition of Done
-
-- [ ] Code complete and peer reviewed
-- [ ] Unit tests written and passing
-- [ ] Acceptance criteria verified
 ```
 
 ## Task Categories to Generate

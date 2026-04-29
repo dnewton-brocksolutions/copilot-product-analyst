@@ -117,7 +117,7 @@ MFG-MES\MES\HTO
 - [Access requirement 2]
 - [Resource requirement]
 
-## Definition of Done
+## Completion Checklist
 
 - [ ] All research questions answered (or documented as unanswerable)
 - [ ] [Specific investigation completed]

@@ -102,7 +102,7 @@ When decomposing a user story, typically create:
 1. Backend first (provides API for frontend)
 2. Frontend second (depends on backend)
 
-**Note:** Testing is included in the Definition of Done for each task rather than as a separate task.
+**Note:** Testing requirements are captured in the story's acceptance criteria rather than as a separate task.
 
 ## What NOT to Include in Tasks
 
@@ -112,7 +112,6 @@ When decomposing a user story, typically create:
 - Specific technology choices (unless critical)
 - Hour estimates (goes in separate ESTIMATES file)
 - Acceptance criteria (lives in user story)
-- Definition of Done (standard DoD applies)
 - How to structure code
 - Which design patterns to use
 

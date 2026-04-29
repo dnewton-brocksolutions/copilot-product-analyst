@@ -155,7 +155,7 @@ MFG-MES\MES\HTO
 - Access to ADO test plans and test suites
 - Permissions to create/update test cases in ADO
 
-## Definition of Done
+## Completion Checklist
 
 - [ ] Existing [Feature/Module] test plan located and reviewed
 - [ ] New "[Feature Name]" test suite created

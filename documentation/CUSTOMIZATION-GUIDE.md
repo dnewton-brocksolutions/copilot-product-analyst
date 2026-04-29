@@ -380,7 +380,7 @@ Create a simple tracking spreadsheet:
 **Solution:**
 
 1. Assign catalog maintenance to rotating team member
-2. Add "Update catalog" to DoD for new components/services
+2. Add catalog update tasks to work items for new components/services
 3. Review catalogs in retrospectives
 4. Set up quarterly catalog review meeting
 
@@ -392,7 +392,7 @@ Create a simple tracking spreadsheet:
 2. Create example work items as templates
 3. Pair with team members to create first few work items
 4. Share time savings metrics (50-75% faster with catalogs)
-5. Make catalog checking mandatory in DoR
+5. Make catalog checking part of the story creation workflow
 
 ---
 

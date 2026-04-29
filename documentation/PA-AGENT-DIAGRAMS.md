@@ -11,7 +11,7 @@ Overview of all components the PA agent uses to generate work items.
 ```mermaid
 graph TB
     subgraph Agent["🤖 Product Analyst Agent"]
-        Core["Core Agent Definition<br/><i>Role, Goals, Approach,<br/>Output Formats, DoR/DoD</i>"]
+        Core["Core Agent Definition<br/><i>Role, Goals, Approach,<br/>Output Formats, Acceptance Criteria</i>"]
     end
 
     subgraph Inputs["📥 Inputs"]
@@ -35,7 +35,7 @@ graph TB
 
     subgraph Outputs["📤 Generated Work Items"]
         Story["User Story<br/><i>Business context + AC</i>"]
-        Technical["Technical Spec<br/><i>Requirements + Tasks + DoD</i>"]
+        Technical["Technical Spec<br/><i>Requirements + Tasks</i>"]
         Estimates["Estimates File<br/><i>Hours + Breakdown + Risks</i>"]
     end
 
@@ -86,10 +86,10 @@ flowchart TD
     G --> H["📋 Create Work Items"]
 
     H --> H1["📄 User Story<br/><i>Business context + AC<br/>(concise, scannable)</i>"]
-    H --> H2["📄 Technical Spec<br/><i>Requirements + Task Breakdown<br/>+ Definition of Done</i>"]
+    H --> H2["📄 Technical Spec<br/><i>Requirements + Task Breakdown</i>"]
     H --> H3["📄 Estimates File<br/><i>Hours by component,<br/>phase breakdown, risks</i>"]
 
-    H1 --> I["✅ Verify Quality<br/><i>DoR + DoD + No estimates in tasks</i>"]
+    H1 --> I["✅ Verify Quality<br/><i>AC complete + No estimates in tasks</i>"]
     H2 --> I
     H3 --> I
 
@@ -110,7 +110,7 @@ flowchart TD
 2. Clarify requirements iteratively until scope is clear
 3. Investigate existing implementation before writing requirements
 4. Define explicit in-scope and out-of-scope boundaries
-5. Validate against DoR/DoD checklists before finalizing
+5. Validate acceptance criteria are complete and testable before finalizing
 
 ---
 
@@ -130,7 +130,7 @@ graph LR
     subgraph Tech["📄 Technical Specification"]
         T1["Business Requirements<br/><i>UI + Backend details</i>"]
         T2["Task Breakdown<br/><i>Backend + Frontend tasks</i>"]
-        T3["Definition of Done<br/><i>Quality checklist</i>"]
+        T3["Non-Functional Requirements<br/><i>Quality checklist</i>"]
         T4["Meta<br/><i>Priority, Tags, Paths</i>"]
     end
 
@@ -304,11 +304,11 @@ The critical pattern of keeping estimates out of task documents.
 ```mermaid
 flowchart TD
     subgraph Old["❌ Old Approach"]
-        OT["Task Document<br/>Description + Requirements +<br/>AC + DoD + <b>Effort: 8hrs</b><br/><i>(mixed concerns)</i>"]
+        OT["Task Document<br/>Description + Requirements +<br/>AC + <b>Effort: 8hrs</b><br/><i>(mixed concerns)</i>"]
     end
 
     subgraph New["✅ New Approach"]
-        NT["Task Document<br/>Description + Requirements +<br/>AC + DoD<br/><i>(pure scope/requirements)</i>"]
+        NT["Task Document<br/>Description + Requirements +<br/>AC<br/><i>(pure scope/requirements)</i>"]
         NE["ESTIMATES-feature.md<br/>Summary table + Phase breakdown +<br/>Risk adjustments + Skill allocation<br/><i>(pure timing/planning)</i>"]
     end
 

@@ -57,11 +57,11 @@ This directory contains reusable templates for creating consistent work item doc
 
 **Use `test-plan-task-template.md` when:**
 
-- Creating a standalone test plan task (rare - testing is typically in DoD)
+- Creating a standalone test plan task (rare - testing requirements are typically captured in the story's acceptance criteria)
 - Documenting complex test scenarios that need separate tracking
 - Legacy projects that still use separate test plan tasks
 
-**Note:** Most projects include testing in Definition of Done rather than creating separate test tasks.
+**Note:** Most projects capture testing requirements in the story's acceptance criteria rather than creating separate test tasks.
 
 **Use `spike-task-template.md` when:**
 

@@ -48,7 +48,7 @@ Create a user story following the **Three-File Pattern**.
 
 **See companion files:**
 
-- `TECHNICAL-[brief-title].md` (requirements, tasks, DoD)
+- `TECHNICAL-[brief-title].md` (requirements, tasks)
 - `ESTIMATES-[brief-title].md` (effort breakdown)
 ```
 
@@ -60,7 +60,6 @@ Include:
 - Suggested Task Breakdown (Backend, Frontend, Testing)
 - Dependencies & Constraints
 - Out of Scope
-- Definition of Done
 - Non-Functional Requirements
 - Meta (Priority, Tags, Area Path from project config)
 

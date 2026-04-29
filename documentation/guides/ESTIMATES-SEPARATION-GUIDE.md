@@ -25,7 +25,6 @@ Task Document:
 ├─ Description
 ├─ Requirements
 ├─ Acceptance Criteria
-├─ Definition of Done
 ├─ Effort Estimate (30 min + 1 hour + 45 min + ...)  ← MIXED IN
 └─ Dependencies
 ```
@@ -37,7 +36,6 @@ Task Document:
 ├─ Description
 ├─ Requirements
 ├─ Acceptance Criteria
-├─ Definition of Done
 └─ Dependencies
    (References separate estimates file)
 
@@ -57,7 +55,7 @@ ESTIMATES-[feature].md:
 
 - **Do NOT include** effort estimates, hour breakdowns, or time allocations
 - Focus on: _What_ needs to be built, _why_ it matters, _how_ success is measured
-- Include acceptance criteria, definition of done, dependencies, technical approach
+- Include acceptance criteria, dependencies, technical approach
 - Keep concise and scannable (easier to review with team)
 
 ### 2. New: Separate Estimates File
@@ -122,22 +120,18 @@ ESTIMATES-[feature].md:
 **Files Created:**
 
 1. **User Story:** `us-request-coils-date-acknowledged-cs001685.md`
-
    - Business context, acceptance criteria, task breakdown
    - NO effort estimates in document
 
 2. **Task: Backend** → `task-backend-acknowledged-at-column.md`
-
-   - Technical requirements, acceptance criteria, definition of done
+   - Technical requirements, acceptance criteria
    - NO effort estimates
 
 3. **Task: Frontend** → `task-frontend-acknowledged-at-column.md`
-
-   - UI requirements, acceptance criteria, definition of done
+   - UI requirements, acceptance criteria
    - NO effort estimates
 
 4. **Task: Testing** → `task-testing-acknowledged-at-column.md`
-
    - Test plan structure, test cases, verification criteria
    - NO effort estimates
 
@@ -154,13 +148,11 @@ ESTIMATES-[feature].md:
 ### When Creating New Work Items
 
 1. **Start with requirements** (user story + tasks)
-
    - Don't think about time yet
    - Focus on _what_ and _why_
    - Get team alignment on scope
 
 2. **Then create estimates document**
-
    - Break down by phase/activity
    - Document assumptions and risks
    - Get team input on accuracy
@@ -173,13 +165,11 @@ ESTIMATES-[feature].md:
 ### During Sprint Planning
 
 1. **Review task document first**
-
    - "Do we understand what needs to be built?"
    - "Are acceptance criteria clear?"
    - Raise scope questions if needed
 
 2. **Reference estimates file**
-
    - "What's the recommended estimate?"
    - "What variations might apply to our team?"
    - "What risks should we track?"
@@ -241,7 +231,7 @@ A: No. User story focuses on business value and acceptance criteria. Reference t
 A: Update the ESTIMATES-[file].md with actual progress. Don't change task scope document unless scope changed.
 
 **Q: Should task templates include an "Estimates" section?**
-A: No. Task templates should focus on requirements, acceptance criteria, and definition of done.
+A: No. Task templates should focus on requirements and acceptance criteria.
 
 **Q: How do we share estimates with the team?**
 A: Link to ESTIMATES-[file].md during sprint planning. It's a standalone reference document.

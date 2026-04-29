@@ -7,7 +7,7 @@
 User stories are now **concise and business-focused** while maintaining comprehensive technical details:
 
 ✅ **Main Story Document:** Business Context + Description + Acceptance Criteria (5-10 lines)  
-✅ **Technical Specification:** Requirements + Task Breakdown + DoD + Meta (separate file)  
+✅ **Technical Specification:** Requirements + Task Breakdown + Meta (separate file)  
 ✅ **Estimates (Optional):** Effort breakdown (separate file)
 
 **Why?** Reduces cognitive load, stays scannable, mirrors the established estimates-separation pattern.
@@ -46,12 +46,6 @@ and confirm coil placement.
 
 - Backend: Create FurnacePositionDTO + gRPC endpoint
 - Frontend: Create FurnacePositionGrid component + coil scan handler
-
-## Definition of Done
-
-- Code merged; CI green
-- ≥ 80% unit test coverage
-- gRPC contracts (.proto) updated
 ```
 
 ## �🚀 Quick Workflow
@@ -77,7 +71,7 @@ Every User Story decomposes into these tasks:
 
 **Total typical estimate:** 14-28 hours per story (without spike)
 
-**Note:** Testing is included in Definition of Done for each task. Backend and frontend tasks include unit, integration, and E2E tests.
+**Note:** Testing requirements are defined in the story's acceptance criteria. Backend and frontend tasks include unit, integration, and E2E tests.
 
 ### ⏱️ Task Format: Objective + Requirements + Technical Context
 
@@ -91,7 +85,6 @@ Every User Story decomposes into these tasks:
 **What NOT to include in tasks:**
 
 - ❌ Acceptance Criteria (lives in User Story)
-- ❌ Definition of Done (standard DoD applies)
 - ❌ Hour estimates (lives in separate ESTIMATES file)
 - ❌ Detailed implementation steps (let developers decide how)
 - ❌ Meta fields (ADO handles this)
@@ -322,7 +315,6 @@ Before finalizing work items:
 - [ ] Database changes documented (Liquibase vs manual)
 - [ ] Service dependencies listed (PlantModel, Shift, User, etc.)
 - [ ] **NO effort estimates in task document** (use separate ESTIMATES file)
-- [ ] Definition of Done includes code quality, testing, deployment criteria
 
 ### Frontend Task
 
@@ -358,7 +350,6 @@ Before finalizing work items:
 - [ ] Developer verification disclaimer present
 - [ ] **NO hour estimates or time breakdowns** (reference ESTIMATES file instead)
 - [ ] Acceptance Criteria in Given/When/Then format
-- [ ] Definition of Done checklist
 - [ ] Dependencies and blockers clearly identified
 - [ ] ADO fields complete (Priority, Tags, Area/Iteration)
 
