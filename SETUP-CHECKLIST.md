@@ -34,11 +34,6 @@ Edit `documentation/product-analyst-workflow/project-config.json` and replace ev
 ### 1.2 Frontend Stack
 
 - [ ] Set `frontend.framework` — React, Vue, Angular, Svelte, etc.
-- [ ] Set `frontend.version` — e.g. `18.x`
-- [ ] Set `frontend.stateManagement` — Redux Toolkit, Pinia, Vuex, etc.
-- [ ] Set `frontend.dataFetching` — RTK Query, React Query, Axios, etc.
-- [ ] Set `frontend.styling` — Material-UI, Tailwind, Bootstrap, etc.
-- [ ] Set `frontend.testing` — Jest + RTL, Vitest, Cypress, etc.
 - [ ] Add entries to `frontend.applications` — one entry per distinct app/module
   - [ ] Set `name` — short identifier (e.g. `AdminPortal`)
   - [ ] Set `description` — what this app does and who uses it
@@ -46,21 +41,14 @@ Edit `documentation/product-analyst-workflow/project-config.json` and replace ev
 ### 1.3 Backend Stack
 
 - [ ] Set `backend.framework` — C#, Java, Python, Node.js, Go, etc.
-- [ ] Set `backend.version` — e.g. `.NET 8.0`, `Java 21`
 - [ ] Set `backend.architecture` — Microservices, Monolith, Serverless, etc.
 - [ ] Set `backend.protocol` — gRPC, REST, GraphQL, tRPC, etc.
-- [ ] Set `backend.orm` — EF Core, Hibernate, TypeORM, etc.
-- [ ] Set `backend.testing` — xUnit + Moq, JUnit + Mockito, pytest, etc.
-- [ ] (Optional) List `backend.commonServices` — shared platform services other features depend on
 
 ### 1.4 Database
 
 - [ ] Add entries to `database.systems` — one entry per database
   - [ ] Set `name` — identifier used in work items (e.g. `MainDB`)
-  - [ ] Set `description` — what this database stores
   - [ ] Set `migrationTool` — Liquibase, Flyway, EF Migrations, etc.
-  - [ ] Set `updateProcess` — how schema changes reach production
-  - [ ] Set `preferredUse` — when to target this database for new work
 
 ### 1.5 Work Tracking
 
@@ -73,9 +61,6 @@ Edit `documentation/product-analyst-workflow/project-config.json` and replace ev
 ### 1.6 Standards
 
 - [ ] Set `standards.estimationUnit` — `hours` or `story-points`
-- [ ] Set `standards.coverage.target` — e.g. `≥80%`
-- [ ] Set `standards.accessibility.standard` — WCAG AA, Section 508, or none
-- [ ] Set `standards.featureFlags.policy` — always, risk-based, or never
 - [ ] Add default `tags` for your tech stack
 
 ---
@@ -105,9 +90,6 @@ Edit `documentation/product-analyst-workflow/project-config.json` and replace ev
 
 These are optional but can improve the agent's quality over time.
 
-- [ ] Add `estimationGuidelines` to `project-config.json` with baseline estimates for your most common task types
-- [ ] Add `definitionOfReady.additionalCriteria` for project-specific DoR gates
-- [ ] Add `definitionOfDone.additionalCriteria` for project-specific DoD requirements
 - [ ] **Add MCP database access** — lets the agent query live databases during task creation so backend task requirements are grounded in actual table/procedure definitions rather than guesswork
 
   **How it works:** MCP tools are registered in VS Code and made available to all agents automatically. The PA agent knows how and when to call them — you just need a compatible MCP server running and registered.

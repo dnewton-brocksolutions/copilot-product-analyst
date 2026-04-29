@@ -81,9 +81,7 @@ Create a sample work item using the chatmode:
 **`frontend`** - Frontend tech stack
 
 - `framework`: React, Vue, Angular, Svelte, etc.
-- `applications`: List of apps/modules
-- `stateManagement`: Redux, Vuex, Pinia, NgRx, etc.
-- `dataFetching`: REST client, gRPC-web, Apollo, etc.
+- `applications`: List of apps/modules with names and descriptions
 
 **`backend`** - Backend tech stack
 
@@ -93,8 +91,8 @@ Create a sample work item using the chatmode:
 
 **`database`** - Database systems and migration approach
 
-- `systems`: List of databases with update processes
-- `migrationTool`: Liquibase, Flyway, EF Migrations, Alembic, etc.
+- `systems`: List of databases with migration tools
+- `mcpAccess`: MCP database identifiers (if using MCP)
 
 **`workTracking`** - Work tracking tool and structure
 
@@ -105,17 +103,9 @@ Create a sample work item using the chatmode:
 **`standards`** - Team standards and policies
 
 - `estimationUnit`: hours or points
-- `testPlanUpdateEstimate`: Standard estimate for test plan updates
-- `coverage`: Code coverage targets
-- `accessibility`: Accessibility standards (WCAG AA, etc.)
-- `featureFlags`: Feature flag policy and tool
+- `defaultPriority`: Default priority for new work items
 
-#### Optional Sections
-
-**`documentation`** - Documentation locations  
-**`estimationGuidelines`** - Project-specific estimation baselines  
-**`definitionOfReady`** - Project-specific DoR additions  
-**`definitionOfDone`** - Project-specific DoD additions
+**`tags`** - Default tags applied to every work item
 
 ---
 
